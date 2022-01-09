@@ -42,6 +42,7 @@
             <th>Nama Penanggungjawab</th>
             <th>Nominal</th>
             <th>Periode</th>
+            <th>Dokumentasi</th>
             <th>Aksi</th>
           </tr>
         </thead>
@@ -50,8 +51,15 @@
             <tr>
               <td class="align-middle text-center text-nowrap">{{ $loop->iteration }}</td>
               <td class="align-middle text-nowrap">{{ $data->in_charge }}</td>
-              <td class="align-middle text-nowrap">{{ $data->nominal }}</td>
+              <td class="align-middle text-center text-nowrap">Rp {{ $data->nominal }},00</td>
               <td class="align-middle text-wrap">{{ $data->date_period }}</td>
+              <td class="align-middle text-center text-nowrap">
+                @if ($data->photo)
+                <a href="/img/foto_jumat/{{ $data->photo }}" target="_blank"><i class="bi bi-eye-fill"></i> Lihat Foto</a>
+                @else
+                <i>Tidak ada foto</i>
+                @endif
+              </td>
               <td class="align-middle text-nowrap">
                 <div class="table-actions d-flex align-items-center justify-content-center gap-3 fs-6">
                   {{-- <a href="/toko/{{ $data->id }}" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Detail" aria-label="Detail"><i class="bi bi-eye-fill"></i></a> --}}
@@ -72,6 +80,7 @@
             <th>Nama Penanggungjawab</th>
             <th>Nominal</th>
             <th>Periode</th>
+            <th>Dokumentasi</th>
             <th>Aksi</th>
           </tr>
         </tfoot>

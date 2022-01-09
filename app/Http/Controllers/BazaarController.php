@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Expanse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use phpDocumentor\Reflection\Types\Null_;
 
 class BazaarController extends Controller
 {
@@ -40,17 +41,27 @@ class BazaarController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'nominal'   => 'required|numeric',
-            'date'      => 'required'
+            'date'      => 'required',
+            'photo'     => 'required|mimes:jpg,jpeg,png'
         ]);
 
         if ($validator->fails()) {
             return back()->with('failed', 'Data terdapat kesalahan atau belum lengkap!');
         }
 
+        if ($request->hasFile('photo')) {
+            $fileName = $request->date . '_Bazaar.' . $request->photo->extension();
+            $request->photo->move(public_path('img/foto_bazaar'), $fileName);
+            $photo = $fileName;
+        } else {
+            $photo = NULL;
+        }
+
         Expanse::create([
             'event'     => 'Bazaar',
             'nominal'   => $request->nominal,
             'date'      => $request->date,
+            'photo'     => $photo
         ]);
         return back()->with('success', 'Pengeluaran bazaar subuh berhasil ditambahkan!');
     }
@@ -83,9 +94,22 @@ class BazaarController extends Controller
         if ($validator->fails()) {
             return back()->with('failed', 'Data terdapat kesalahan atau belum lengkap!');
         }
+
+        if ($request->hasFile('photo')) {
+            // Remove last photos
+            if ($expanse->photo) {
+                unlink(public_path('img/foto_bazaar/' . $expanse->photo));
+            }
+            $fileName = $request->date . '_Bazaar.' . $request->photo->extension();
+            $request->photo->move(public_path('img/foto_bazaar'), $fileName);
+            $photo = $fileName;
+        } else {
+            $photo = NULL;
+        }
         $validated = [
             'nominal'   => $request->nominal,
             'date'      => $request->date,
+            'photo'     => $photo
         ];
 
         $expanse->update($validated);
@@ -100,6 +124,8 @@ class BazaarController extends Controller
      */
     public function destroy(Expanse $expanse)
     {
+        unlink(public_path('img/foto_bazaar/' . $expanse->photo));
+
         $expanse->delete();
         return back()->with('success', 'Pengeluaran bazaar subuh berhasil dihapus!');
     }

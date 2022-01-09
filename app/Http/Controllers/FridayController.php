@@ -68,6 +68,12 @@ class FridayController extends Controller
             'date_period'   => 'required',
             'photo'         => 'nullable|mimes:jpg,jpeg,png'
         ]);
+
+        if ($request->hasFile('photo')) {
+            $fileName = $validated['date_period'] . '_' . $validated['category'] . '.' . $request->photo->extension();
+            $request->photo->move(public_path('img/foto_jumat'), $fileName);
+            $validated['photo'] = $fileName;
+        }
         Friday::create($validated);
         switch ($validated['category']) {
             case 'Masjid Aminah Al-Fajr':
@@ -117,6 +123,20 @@ class FridayController extends Controller
             'date_period'   => 'required',
             'photo'         => 'nullable|mimes:jpg,jpeg,png'
         ]);
+
+        if ($request->hasFile('photo')) {
+            // Remove last photos
+            if ($friday->photo) {
+                $oldphoto = $friday->photo;
+                unlink(public_path('img/foto_jumat/' . $oldphoto));
+            }
+            // Uploading Photos
+            $fileName = $validated['date_period'] . '_' . $validated['category'] . '.' . $request->photo->extension();
+            $request->photo->move(public_path('img/foto_jumat'), $fileName);
+
+            $validated['photo'] = $fileName;
+        }
+
         $friday->update($validated);
         switch ($validated['category']) {
             case 'Masjid Aminah Al-Fajr':
@@ -146,6 +166,8 @@ class FridayController extends Controller
      */
     public function destroy(Friday $friday)
     {
+        unlink(public_path('img/foto_jumat/' . $friday->photo));
+
         switch ($friday->category) {
             case 'Masjid Aminah Al-Fajr':
                 $slug = 'aminah-al-fajr';

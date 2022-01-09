@@ -41,6 +41,7 @@
                 <th>Nomor</th>
                 <th>Nominal</th>
                 <th>Periode</th>
+                <th>Dokumentasi</th>
                 <th>Aksi</th>
               </tr>
             </thead>
@@ -50,6 +51,13 @@
                 <td class="align-middle text-center text-nowrap">{{ $loop->iteration }}</td>
                 <td class="align-middle text-nowrap">{{ $data->nominal }}</td>
                 <td class="align-middle text-wrap">{{ $data->date }}</td>
+                <td class="align-middle text-center text-nowrap">
+                  @if ($data->photo)
+                  <a href="/img/foto_bazaar/{{ $data->photo }}" target="_blank"><i class="bi bi-eye-fill"></i> Lihat Foto</a>
+                  @else
+                  <i>Tidak ada foto</i>
+                  @endif
+                </td>
                 <td class="align-middle text-nowrap">
                   <div class="table-actions d-flex align-items-center justify-content-center gap-3 fs-6">
                     {{-- <a href="/toko/{{ $data->id }}" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Detail" aria-label="Detail"><i class="bi bi-eye-fill"></i></a> --}}
@@ -69,6 +77,7 @@
                 <th>Nomor</th>
                 <th>Nominal</th>
                 <th>Periode</th>
+                <th>Dokumentasi</th>
                 <th>Aksi</th>
               </tr>
             </tfoot>
@@ -86,7 +95,7 @@
         <h5 class="modal-title">Form Tambah Pengeluaran</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="/bazaar" method="POST" id="form-container">
+      <form action="/bazaar" method="POST" id="form-container" enctype="multipart/form-data">
         @csrf
         @method('POST')
         <input type="hidden" class="form-control" id="merchant_id" name="merchant_id" value="">
@@ -103,10 +112,14 @@
             <label class="form-label">Tanggal Pelaksanaan</label>
             <input class="result form-control" type="text" name="date" id="date" placeholder="Klik untuk pilih tanggal.." value="{{ old('date') }}" tabindex="2">
           </div>
+          <div class="col-12 mt-3">
+            <label class="form-label">Dokumentasi</label>
+            <input type="file" class="form-control" name="photo" accept=".jpg,.jpeg,.png" tabindex="3">
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" tabindex="4">Tutup</button>
-          <button type="submit" class="btn btn-primary buttonSubmit" tabindex="3">Tambah Pengeluaran!</button>
+          <button type="submit" class="btn btn-primary buttonSubmit" tabindex="4">Tambah Pengeluaran!</button>
         </div>
       </form>
     </div>

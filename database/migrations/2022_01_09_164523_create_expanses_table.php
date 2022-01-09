@@ -18,6 +18,7 @@ class CreateExpansesTable extends Migration
             $table->string('event')->default('Bazaar');
             $table->string('nominal')->default(0);
             $table->date('date');
+            $table->string('photo')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

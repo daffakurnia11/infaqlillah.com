@@ -176,8 +176,10 @@ class MerchantController extends Controller
 
         if ($request->hasFile('photo')) {
             // Remove last photos
-            $oldphoto = $merchant->photo;
-            unlink(public_path('img/foto_pedagang/' . $oldphoto));
+            if ($merchant->photo) {
+                $oldphoto = $merchant->photo;
+                unlink(public_path('img/foto_pedagang/' . $oldphoto));
+            }
             // Uploading Photos
             $photoFile = $merchant->number . '.' . $request->photo->extension();
             $request->photo->move(public_path('img/foto_pedagang'), $photoFile);
