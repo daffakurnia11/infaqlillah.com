@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Merchant;
+use App\Models\Merchant_income;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -23,5 +25,8 @@ class DatabaseSeeder extends Seeder
         $user->password = Hash::make('alhamdulillah');
         $user->roles    = 'Admin';
         $user->save();
+
+        // Merchant::factory(50)->create();
+        // Merchant_income::factory(100)->create();
     }
 }

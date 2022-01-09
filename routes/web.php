@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\MerchantController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,4 +21,13 @@ Route::post('/login', [AdminController::class, 'authentication']);
 Route::middleware('auth')->group(function () {
     Route::get('/', [AdminController::class, 'index']);
     Route::post('/logout', [AdminController::class, 'logout']);
+    Route::resource('pedagang', MerchantController::class)->parameters([
+        'pedagang' => 'merchant'
+    ]);
+    Route::get('/getIncomeData/{merchant}', [MerchantController::class, 'getIncomeData']);
+    Route::prefix('infaq')->group(function () {
+        Route::get('/pedagang', [MerchantController::class, 'income']);
+    });
+    Route::get('/getMerchantData/{merchant}', [MerchantController::class, 'getMerchantData']);
+    Route::post('/addIncome/{merchant}', [MerchantController::class, 'addIncome']);
 });

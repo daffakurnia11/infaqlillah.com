@@ -13,7 +13,7 @@
   <!--navigation-->
   <ul class="metismenu" id="menu">
     
-    <li class="mm-active">
+    <li class="{{ Request::is('/') ? 'mm-active' : '' }}">
       <a href="">
         <div class="parent-icon"><i class="bi bi-house-door"></i>
         </div>
@@ -28,13 +28,13 @@
         </div>
         <div class="menu-title">Infaq Masuk</div>
       </a>
-      <ul class="mm-collapse " style="">
-        <li class=""> 
-          <a href=""><i class="bi bi-arrow-right-short"></i>
+      <ul class="mm-collapse {{ Request::is('infaq**') ? 'mm-show' : '' }}" style="">
+        <li class="{{ Request::is('infaq/pedagang') ? 'mm-active' : '' }}"> 
+          <a href="/infaq/pedagang"><i class="bi bi-arrow-right-short"></i>
             Pedagang
           </a>
         </li>
-        <li class=""> 
+        {{-- <li class=""> 
           <a href=""><i class="bi bi-arrow-right-short"></i>
             Donatur
           </a>
@@ -43,24 +43,41 @@
           <a href=""><i class="bi bi-arrow-right-short"></i>
             Toko
           </a>
-        </li>
+        </li> --}}
       </ul>
     </li>
 
     <li class="menu-label">Data Pengeluaran</li>
-    <li class="">
-      <a href="">
+    <li class="{{ Request::is('pedagang**') ? 'mm-active' : '' }}">
+      <a href="/pedagang">
         <div class="parent-icon"><i class="bi bi-shop"></i>
         </div>
         <div class="menu-title">Modal Pedagang</div>
       </a>
     </li>
-    <li class="">
-      <a href="">
+    {{-- <li class="">
+      <a class="has-arrow" href="#" aria-expanded="true">
         <div class="parent-icon"><i class="bi bi-house"></i>
         </div>
         <div class="menu-title">Yatim Piatu</div>
       </a>
+      <ul class="mm-collapse" style="">
+        <li class=""> 
+          <a href=""><i class="bi bi-arrow-right-short"></i>
+            A
+          </a>
+        </li>
+        <li class=""> 
+          <a href=""><i class="bi bi-arrow-right-short"></i>
+            A
+          </a>
+        </li>
+        <li class=""> 
+          <a href=""><i class="bi bi-arrow-right-short"></i>
+            A
+          </a>
+        </li>
+      </ul>
     </li>
     <li class="">
       <a class="has-arrow" href="#" aria-expanded="true">
@@ -71,7 +88,12 @@
       <ul class="mm-collapse" style="">
         <li class=""> 
           <a href=""><i class="bi bi-arrow-right-short"></i>
-            Siwalan Panji
+            Masjid Aminah Al-Fajr
+          </a>
+        </li>
+        <li class=""> 
+          <a href=""><i class="bi bi-arrow-right-short"></i>
+            Masjid Siwalan Panji
           </a>
         </li>
         <li class=""> 
@@ -116,11 +138,6 @@
       <ul class="mm-collapse" style="">
         <li class=""> 
           <a href=""><i class="bi bi-arrow-right-short"></i>
-            Foto Toko
-          </a>
-        </li>
-        <li class=""> 
-          <a href=""><i class="bi bi-arrow-right-short"></i>
             Foto Pedagang
           </a>
         </li>
@@ -131,11 +148,16 @@
         </li>
         <li class=""> 
           <a href=""><i class="bi bi-arrow-right-short"></i>
+            Foto Bazar Subuh
+          </a>
+        </li>
+        <li class=""> 
+          <a href=""><i class="bi bi-arrow-right-short"></i>
             Foto Kegiatan
           </a>
         </li>
       </ul>
-    </li>
+    </li> --}}
 
   </ul>
   <!--end navigation-->
