@@ -90,7 +90,7 @@
     <div class="card shadow-sm border-0 overflow-hidden">
       <div class="card-body">
         <div class="profile-avatar text-center">
-          <img src="/img/foto_pedagang/{{ $merchant->photo }}" class="shadow" height="200" alt="">
+          <img src="/img/foto_pedagang/{{ $merchant->photo ?: 'default-150x150.png' }}" class="shadow" height="200" alt="">
         </div>
         <div class="text-center mt-4">
           <h4 class="mb-1">{{ $merchant->name }}</h4>

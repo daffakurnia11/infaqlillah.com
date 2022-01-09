@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Store_income;
+use App\Models\Store;
 use Illuminate\Http\Request;
 
-class Store_incomeController extends Controller
+class StoreController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class Store_incomeController extends Controller
     public function index()
     {
         return view('toko.index', [
-            'incomes' => Store_income::all()
+            'incomes' => Store::all()
         ]);
     }
 
@@ -42,20 +42,20 @@ class Store_incomeController extends Controller
             'nominal'   => 'required|numeric',
             'notes'     => 'nullable'
         ]);
-        Store_income::create($validate);
+        Store::create($validate);
         return redirect('toko')->with('success', 'Data pembelian berhasil ditambahkan!');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Store_income  $store_income
+     * @param  \App\Models\Store  $store
      * @return \Illuminate\Http\Response
      */
-    public function edit(Store_income $store_income)
+    public function edit(Store $store)
     {
         return view('toko.edit', [
-            'income' => $store_income
+            'income' => $store
         ]);
     }
 
@@ -63,29 +63,29 @@ class Store_incomeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Store_income  $store_income
+     * @param  \App\Models\Store  $store
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Store_income $store_income)
+    public function update(Request $request, Store $store)
     {
         $validate = $request->validate([
             'buyer'     => 'required',
             'nominal'   => 'required|numeric',
             'notes'     => 'nullable'
         ]);
-        $store_income->update($validate);
+        $store->update($validate);
         return redirect('toko')->with('success', 'Data pembelian berhasil diubah!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Store_income  $store_income
+     * @param  \App\Models\Store  $store
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Store_income $store_income)
+    public function destroy(Store $store)
     {
-        $store_income->delete();
+        $store->delete();
         return redirect('toko')->with('success', 'Data pembelian berhasil dihapus!');
     }
 }

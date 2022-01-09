@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MerchantController;
-use App\Http\Controllers\Store_incomeController;
+use App\Http\Controllers\StoreController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,7 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/getMerchantData/{merchant}', [MerchantController::class, 'getMerchantData']);
     Route::post('/addIncome/{merchant}', [MerchantController::class, 'addIncome']);
 
-    Route::resource('toko', Store_incomeController::class)->parameters([
+    Route::resource('toko', StoreController::class)->parameters([
         'toko' => 'store_income'
     ])->except('show');
 });
