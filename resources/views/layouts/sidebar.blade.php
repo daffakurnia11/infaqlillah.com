@@ -28,7 +28,7 @@
         </div>
         <div class="menu-title">Infaq Masuk</div>
       </a>
-      <ul class="mm-collapse {{ Request::is('infaq**') ? 'mm-show' : '' }}" style="">
+      <ul class="mm-collapse {{ (Request::is('infaq**') || Request::is('toko**')) ? 'mm-show' : '' }}" style="">
         <li class="{{ Request::is('infaq/pedagang') ? 'mm-active' : '' }}"> 
           <a href="/infaq/pedagang"><i class="bi bi-arrow-right-short"></i>
             Pedagang
@@ -38,12 +38,12 @@
           <a href=""><i class="bi bi-arrow-right-short"></i>
             Donatur
           </a>
-        </li>
-        <li class=""> 
-          <a href=""><i class="bi bi-arrow-right-short"></i>
+        </li> --}}
+        <li class="{{ Request::is('toko**') ? 'mm-active' : '' }}"> 
+          <a href="/toko"><i class="bi bi-arrow-right-short"></i>
             Toko
           </a>
-        </li> --}}
+        </li>
       </ul>
     </li>
 

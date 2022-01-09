@@ -1,6 +1,10 @@
 @extends('layouts.main')
 
 @section('content')
+
+@if (session()->has('success') || session()->has('failed'))
+  <div id="notifications" data-success="{{ session('success') }}" data-failed="{{ session('failed') }}"></div>
+@endif
     
 <!--breadcrumb-->
 <div class="page-breadcrumb d-flex align-items-center flex-column flex-md-row mb-3">

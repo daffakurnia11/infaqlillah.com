@@ -1,5 +1,6 @@
 const flashdata = $('#flash-data').data('flashdata');
-const notification = $('#notifications').data('notification');
+const success = $('#notifications').data('success');
+const failed = $('#notifications').data('failed');
 
 if (flashdata) {
   // Login Failed
@@ -22,67 +23,30 @@ if (flashdata) {
   }
 }
 
-if (notification) {
-  if (notification == 'Data masih belum lengkap!') {
-    Lobibox.notify('warning', {
-      pauseDelayOnHover: true,
-      size: 'mini',
-      rounded: true,
-      delayIndicator: false,
-      icon: 'bx bx-error',
-      continueDelayOnInactiveTab: false,
-      position: 'top right',
-      msg: notification
-    });
-  }
-  if (notification == 'Data berhasil dikirim! Cek kembali data anda!') {
-    Lobibox.notify('success', {
-      pauseDelayOnHover: true,
-      size: 'mini',
-      rounded: true,
-      icon: 'bx bx-check-circle',
-      delayIndicator: false,
-      continueDelayOnInactiveTab: false,
-      position: 'top right',
-      msg: notification
-    });
-  }
-  if (notification == 'Pengeluaran telah dicatat dan Pedagang telah ditambahkan!') {
-    Lobibox.notify('success', {
-      pauseDelayOnHover: true,
-      size: 'mini',
-      rounded: true,
-      icon: 'bx bx-check-circle',
-      delayIndicator: false,
-      continueDelayOnInactiveTab: false,
-      position: 'top right',
-      msg: notification
-    });
-  }
-  if (notification == 'Data pedagang telah berhasil diubah!') {
-    Lobibox.notify('success', {
-      pauseDelayOnHover: true,
-      size: 'mini',
-      rounded: true,
-      icon: 'bx bx-check-circle',
-      delayIndicator: false,
-      continueDelayOnInactiveTab: false,
-      position: 'top right',
-      msg: notification
-    });
-  }
-  if (notification == 'Data pedagang telah berhasil dihapus!') {
-    Lobibox.notify('success', {
-      pauseDelayOnHover: true,
-      size: 'mini',
-      rounded: true,
-      icon: 'bx bx-check-circle',
-      delayIndicator: false,
-      continueDelayOnInactiveTab: false,
-      position: 'top right',
-      msg: notification
-    });
-  }
+if (success) {
+  Lobibox.notify('success', {
+    pauseDelayOnHover: true,
+    size: 'mini',
+    rounded: true,
+    icon: 'bx bx-check-circle',
+    delayIndicator: false,
+    continueDelayOnInactiveTab: false,
+    position: 'top right',
+    msg: success
+  });
+}
+
+if (failed) {
+  Lobibox.notify('warning', {
+    pauseDelayOnHover: true,
+    size: 'mini',
+    rounded: true,
+    delayIndicator: false,
+    icon: 'bx bx-error',
+    continueDelayOnInactiveTab: false,
+    position: 'top right',
+    msg: failed
+  });
 }
 
 $(function () {

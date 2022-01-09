@@ -60,7 +60,7 @@ class MerchantController extends Controller
             $validated['photo'] = $photoFile;
 
             Merchant::create($validated);
-            return redirect('pedagang/' . $validated['number'])->with('message', 'Pengeluaran telah dicatat dan Pedagang telah ditambahkan!');
+            return redirect('pedagang/' . $validated['number'])->with('success', 'Pengeluaran telah dicatat dan Pedagang telah ditambahkan!');
         }
     }
 
@@ -185,7 +185,7 @@ class MerchantController extends Controller
             $validated['photo'] = $photoFile;
         }
         $merchant->update($validated);
-        return redirect('pedagang/' . $merchant->number)->with('message', 'Data pedagang telah berhasil diubah!');
+        return redirect('pedagang/' . $merchant->number)->with('success', 'Data pedagang telah berhasil diubah!');
     }
 
     /**
@@ -200,7 +200,7 @@ class MerchantController extends Controller
         unlink(public_path('img/foto_pedagang/' . $photo));
 
         $merchant->delete();
-        return redirect('pedagang')->with('message', 'Data pedagang telah berhasil dihapus!');
+        return redirect('pedagang')->with('success', 'Data pedagang telah berhasil dihapus!');
     }
 
     public function income()
@@ -227,7 +227,7 @@ class MerchantController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return back()->with('message', 'Data masih belum lengkap!');
+            return back()->with('success', 'Data masih belum lengkap!');
         }
 
         $total = $merchant->incomes + $request->nominal;
@@ -240,7 +240,7 @@ class MerchantController extends Controller
             'received_at'   => Carbon::now(),
         ]);
 
-        return back()->with('message', 'Data berhasil dikirim! Cek kembali data anda!');
+        return back()->with('success', 'Data berhasil dikirim! Cek kembali data anda!');
     }
 
     public function getIncomeData(Merchant $merchant)

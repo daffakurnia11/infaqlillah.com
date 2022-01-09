@@ -8,7 +8,7 @@
 
 <!--breadcrumb-->
 <div class="page-breadcrumb d-flex align-items-center flex-column flex-md-row mb-3">
-  <div class="breadcrumb-title pe-3 border-0">Pedagang</div>
+  <div class="breadcrumb-title pe-3 border-0">Toko</div>
   <div class="ms-md-auto me-md-0 mx-auto ps-3">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb mb-0 p-0">
@@ -16,7 +16,7 @@
           <a href="/"><i class="bx bx-home-alt"></i> Dashboard</a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">
-          <i class="bi bi-shop"></i> Pedagang
+          <i class="bi bi-shop"></i> Toko
         </li>
       </ol>
     </nav>
@@ -25,8 +25,8 @@
 <!--end breadcrumb-->
 
 <h6 class="mb-0 text-uppercase d-flex justify-content-between align-items-center">
-  <span>Data Seluruh Pedagang</span>
-  <a href="/pedagang/create" class="btn btn-sm btn-primary">Tambah Pedagang</a>
+  <span>Data Seluruh Pemasukkan</span>
+  <a href="/toko/create" class="btn btn-sm btn-primary">Tambah Pemasukkan</a>
 </h6>
 <hr/>
 <div class="card">
@@ -36,28 +36,26 @@
         <thead>
           <tr>
             <th>Nomor</th>
-            <th>Nama</th>
-            <th>Jenis Kelamin</th>
-            <th>Alamat</th>
-            <th>Status</th>
-            <th>Tanggal Daftar</th>
+            <th>Nama Pembeli</th>
+            <th>Nominal</th>
+            <th>Catatan</th>
+            <th>Waktu Pembelian</th>
             <th>Aksi</th>
           </tr>
         </thead>
         <tbody>
-          @foreach ($merchants as $merchant)
+          @foreach ($incomes as $income)
             <tr>
-              <td class="align-middle text-center text-nowrap">{{ $merchant->number }}</td>
-              <td class="align-middle text-nowrap">{{ $merchant->name }}</td>
-              <td class="align-middle text-nowrap">{{ $merchant->gender }}</td>
-              <td class="align-middle text-wrap">{{ $merchant->address }}</td>
-              <td class="align-middle text-center text-nowrap">{{ $merchant->status }}</td>
-              <td class="align-middle text-center text-nowrap">{{ $merchant->created_at }}</td>
+              <td class="align-middle text-center text-nowrap">{{ $loop->iteration }}</td>
+              <td class="align-middle text-nowrap">{{ $income->buyer }}</td>
+              <td class="align-middle text-nowrap">{{ $income->nominal }}</td>
+              <td class="align-middle text-wrap">{{ $income->notes ?: '-' }}</td>
+              <td class="align-middle text-center text-nowrap">{{ $income->created_at }}</td>
               <td class="align-middle text-nowrap">
                 <div class="table-actions d-flex align-items-center justify-content-center gap-3 fs-6">
-                  <a href="/pedagang/{{ $merchant->number }}" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Detail" aria-label="Detail"><i class="bi bi-eye-fill"></i></a>
-                  <a href="/pedagang/{{ $merchant->number }}/edit" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Ubah" aria-label="Ubah"><i class="bi bi-pencil-fill"></i></a>
-                  <form action="/pedagang/{{ $merchant->number }}" method="POST">
+                  {{-- <a href="/toko/{{ $income->id }}" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Detail" aria-label="Detail"><i class="bi bi-eye-fill"></i></a> --}}
+                  <a href="/toko/{{ $income->id }}/edit" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Ubah" aria-label="Ubah"><i class="bi bi-pencil-fill"></i></a>
+                  <form action="/toko/{{ $income->id }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="text-danger bg-transparent border-0 p-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Hapus" aria-label="Hapus" onclick="return confirm('Apakah data ingin dihapus?');"><i class="bi bi-trash-fill"></i></button>
@@ -70,11 +68,10 @@
         <tfoot>
           <tr>
             <th>Nomor</th>
-            <th>Nama</th>
-            <th>Jenis Kelamin</th>
-            <th>Alamat</th>
-            <th>Status</th>
-            <th>Tanggal Daftar</th>
+            <th>Nama Pembeli</th>
+            <th>Nominal</th>
+            <th>Catatan</th>
+            <th>Waktu Pembelian</th>
             <th>Aksi</th>
           </tr>
         </tfoot>
