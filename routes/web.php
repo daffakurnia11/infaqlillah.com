@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\FridayController;
 use App\Http\Controllers\MerchantController;
 use App\Http\Controllers\StoreController;
 use Illuminate\Support\Facades\Route;
@@ -35,4 +36,15 @@ Route::middleware('auth')->group(function () {
     Route::resource('toko', StoreController::class)->parameters([
         'toko' => 'store_income'
     ])->except('show');
+
+    Route::prefix('jumat-berkah')->group(function () {
+        Route::get('/aminah-al-fajr', [FridayController::class, 'aminah_al_fajr']);
+        Route::get('/siwalan-panji', [FridayController::class, 'siwalan_panji']);
+        Route::get('/buduran', [FridayController::class, 'buduran']);
+        Route::get('/gedangan', [FridayController::class, 'gedangan']);
+        Route::get('/tulungagung', [FridayController::class, 'tulungagung']);
+    });
+    Route::resource('jumat-berkah', FridayController::class)->parameters([
+        'jumat-berkah' => 'friday'
+    ])->except('index', 'show');
 });

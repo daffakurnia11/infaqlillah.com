@@ -47,15 +47,15 @@
             </div>
             <div class="col-12">
               <label class="form-label">Nominal</label>
-              <div class="input-group mb-3"> 
+              <div class="input-group"> 
                 <span class="input-group-text">Rp</span>
                 <input type="text" class="form-control @error('nominal') is-invalid @enderror" name="nominal" value="{{ old('nominal') }}" tabindex="2">
                 <span class="input-group-text">.00</span>
               </div>
               @error('nominal')
-              <div class="invalid-feedback">
+              <small class="text-danger">
                 {{ $message }}
-              </div>
+              </small>
               @enderror
             </div>
             <div class="col-12">

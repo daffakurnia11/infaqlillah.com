@@ -158,11 +158,15 @@ return [
     */
 
     'attributes' => [
-        'name'      => 'Nama lengkap',
-        'gender'    => 'Jenis kelamin',
-        'nominal'   => 'Nominal',
-        'address'   => 'Alamat',
-        'photo'     => 'Foto'
+        'name'          => 'Nama lengkap',
+        'gender'        => 'Jenis kelamin',
+        'nominal'       => 'Nominal',
+        'address'       => 'Alamat',
+        'photo'         => 'Foto',
+        'in_charge'     => 'Nama penanggungjawab',
+        'category'      => 'Tempat',
+        'date_period'   => 'Periode',
+        'buyer'         => 'Nama pembeli',
     ],
 
 ];

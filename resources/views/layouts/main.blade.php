@@ -20,6 +20,9 @@
   <link href="/css/icons.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <!-- Datepicker -->
+	<link rel="stylesheet" href="/vendor/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
   <!-- Theme Styles -->
   <link href="/css/dark-theme.css" rel="stylesheet" />
@@ -78,27 +81,26 @@
 <!-- Chartjs -->
 <script src="/vendor/chartjs/js/Chart.min.js"></script>
 <script src="/vendor/chartjs/js/Chart.extension.js"></script>
+<!-- Datepicker -->
+<script src="/vendor/bootstrap-material-datetimepicker/js/moment.min.js"></script>
+<script src="/vendor/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.min.js"></script>
 <!-- Javascript -->
 <script src="/js/app.js"></script>
 <script src="/js/script.js"></script>
 <script>
   $(function() {
 	"use strict";
-
-    $(document).ready(function() {
-        $('#example').DataTable();
-      } );
-
-
-      $(document).ready(function() {
-        var table = $('#example2').DataTable( {
-            lengthChange: false,
-            buttons: [ 'copy', 'excel', 'pdf', 'print', 'colvis']
-        } );
-
-        table.buttons().container()
-            .appendTo( '#example2_wrapper .col-md-6:eq(0)' );
+  $(document).ready(function() {
+    var table = $('#example2').DataTable( {
+      lengthChange: false,
+      buttons: [ 'copy', 'excel', 'pdf', 'print', 'colvis']
     } );
+
+    table.buttons().container().appendTo( '#example2_wrapper .col-md-6:eq(0)' );
+    $('#date').bootstrapMaterialDatePicker({
+      time: false
+    });
+  });
 
 
 });

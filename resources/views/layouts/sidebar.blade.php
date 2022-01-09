@@ -78,57 +78,57 @@
           </a>
         </li>
       </ul>
-    </li>
+    </li> --}}
     <li class="">
       <a class="has-arrow" href="#" aria-expanded="true">
         <div class="parent-icon"><i class="bi bi-gift"></i>
         </div>
         <div class="menu-title">Jumat Berkah</div>
       </a>
-      <ul class="mm-collapse" style="">
-        <li class=""> 
-          <a href=""><i class="bi bi-arrow-right-short"></i>
+      <ul class="mm-collapse {{ Request::is('jumat-berkah**') ? 'mm-show' : '' }}" style="">
+        <li class="{{ Request::is('jumat-berkah/aminah-al-fajr') ? 'mm-active' : '' }}"> 
+          <a href="/jumat-berkah/aminah-al-fajr"><i class="bi bi-arrow-right-short"></i>
             Masjid Aminah Al-Fajr
           </a>
         </li>
-        <li class=""> 
-          <a href=""><i class="bi bi-arrow-right-short"></i>
+        <li class="{{ Request::is('jumat-berkah/siwalan-panji') ? 'mm-active' : '' }}"> 
+          <a href="/jumat-berkah/siwalan-panji"><i class="bi bi-arrow-right-short"></i>
             Masjid Siwalan Panji
           </a>
         </li>
-        <li class=""> 
-          <a href=""><i class="bi bi-arrow-right-short"></i>
+        <li class="{{ Request::is('jumat-berkah/buduran') ? 'mm-active' : '' }}"> 
+          <a href="/jumat-berkah/buduran"><i class="bi bi-arrow-right-short"></i>
             Buduran
           </a>
         </li>
-        <li class=""> 
-          <a href=""><i class="bi bi-arrow-right-short"></i>
+        <li class="{{ Request::is('jumat-berkah/gedangan') ? 'mm-active' : '' }}"> 
+          <a href="/jumat-berkah/gedangan"><i class="bi bi-arrow-right-short"></i>
             Gedangan
           </a>
         </li>
-        <li class=""> 
-          <a href=""><i class="bi bi-arrow-right-short"></i>
+        <li class="{{ Request::is('jumat-berkah/tulungagung') ? 'mm-active' : '' }}"> 
+          <a href="/jumat-berkah/tulungagung"><i class="bi bi-arrow-right-short"></i>
             Tulungagung
           </a>
         </li>
       </ul>
     </li>
-    <li class="">
+    {{-- <li class="">
       <a href="">
         <div class="parent-icon"><i class="bi bi-bag"></i>
         </div>
         <div class="menu-title">Bazar Subuh</div>
       </a>
-    </li>
-    <li class="">
+    </li> --}}
+    {{-- <li class="">
       <a href="">
         <div class="parent-icon"><i class="bi bi-cart-dash"></i>
         </div>
         <div class="menu-title">Lain-lain</div>
       </a>
-    </li>
+    </li> --}}
 
-    <li class="menu-label">Galeri</li>
+    {{-- <li class="menu-label">Galeri</li>
     <li class="">
       <a class="has-arrow" href="#" aria-expanded="true">
         <div class="parent-icon"><i class="bi bi-images"></i>
