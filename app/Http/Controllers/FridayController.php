@@ -15,30 +15,35 @@ class FridayController extends Controller
     public function aminah_al_fajr()
     {
         return view('jumat-berkah.aminah-al-fajr', [
+            'title'     => 'Jumat Berkah Masjid Aminah Al-Fajr',
             'datas'     => Friday::where('category', 'Masjid Aminah Al-Fajr')->get()
         ]);
     }
     public function siwalan_panji()
     {
         return view('jumat-berkah.siwalan-panji', [
+            'title'     => 'Jumat Berkah Masjid Siwalan Panji',
             'datas'     => Friday::where('category', 'Masjid Siwalan Panji')->get()
         ]);
     }
     public function buduran()
     {
         return view('jumat-berkah.buduran', [
+            'title'     => 'Jumat Berkah Buduran',
             'datas'     => Friday::where('category', 'Buduran')->get()
         ]);
     }
     public function gedangan()
     {
         return view('jumat-berkah.gedangan', [
+            'title'     => 'Jumat Berkah Gedangan',
             'datas'     => Friday::where('category', 'Gedangan')->get()
         ]);
     }
     public function tulungagung()
     {
         return view('jumat-berkah.tulungagung', [
+            'title'     => 'Jumat Berkah Tulungagung',
             'datas'     => Friday::where('category', 'Tulungagung')->get()
         ]);
     }
@@ -50,7 +55,9 @@ class FridayController extends Controller
      */
     public function create()
     {
-        return view('jumat-berkah.create');
+        return view('jumat-berkah.create', [
+            'title'     => 'Tambah Pengeluaran Jumat Berkah'
+        ]);
     }
 
     /**
@@ -103,7 +110,10 @@ class FridayController extends Controller
      */
     public function edit(Friday $friday)
     {
-        return view('jumat-berkah.edit', compact('friday'));
+        return view('jumat-berkah.edit', [
+            'title'     => 'Ubah Pengeluaran Jumat Berkah',
+            'friday'    => $friday
+        ]);
     }
 
     /**

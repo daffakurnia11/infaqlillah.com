@@ -15,7 +15,8 @@ class StoreController extends Controller
     public function index()
     {
         return view('toko.index', [
-            'incomes' => Store::all()
+            'title'     => 'Infaq Toko',
+            'incomes'   => Store::all()
         ]);
     }
 
@@ -26,7 +27,9 @@ class StoreController extends Controller
      */
     public function create()
     {
-        return view('toko.create');
+        return view('toko.create', [
+            'title'     => 'Tambah Infaq Toko'
+        ]);
     }
 
     /**
@@ -55,7 +58,8 @@ class StoreController extends Controller
     public function edit(Store $store)
     {
         return view('toko.edit', [
-            'income' => $store
+            'title'     => 'Ubah Infaq Toko',
+            'income'    => $store
         ]);
     }
 

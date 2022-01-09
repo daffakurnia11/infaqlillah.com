@@ -32,7 +32,7 @@
 
   <script src="/vendor/jquery/dist/jquery.js"></script>
 
-  <title>Infaqlillah Admin | Dashboard</title>
+  <title>{{ $title }} | Infaqlillah Admin</title>
 </head>
 
 <body>

@@ -18,6 +18,7 @@ class MerchantController extends Controller
     public function index()
     {
         return view('pedagang.index', [
+            'title'         => 'Modal Pedagang',
             'merchants'     => Merchant::all()
         ]);
     }
@@ -29,7 +30,9 @@ class MerchantController extends Controller
      */
     public function create()
     {
-        return view('pedagang.create');
+        return view('pedagang.create', [
+            'title'     => 'Tambah Pedagang'
+        ]);
     }
 
     /**
@@ -140,6 +143,7 @@ class MerchantController extends Controller
             ];
         }
         return view('pedagang.show', [
+            'title'         => 'Detail Pedagang No ' . $merchant->number,
             'merchant'      => $merchant,
             'income'        => $data
         ]);
@@ -153,7 +157,10 @@ class MerchantController extends Controller
      */
     public function edit(Merchant $merchant)
     {
-        return view('pedagang.edit', compact('merchant'));
+        return view('pedagang.edit', [
+            'title'     => 'Ubah Pedagang No ' . $merchant->number,
+            'merchant'  => $merchant
+        ]);
     }
 
     /**
@@ -208,6 +215,7 @@ class MerchantController extends Controller
     public function income()
     {
         return view('pedagang.income', [
+            'title'         => 'Infaq Pedagang',
             'merchants'     => Merchant::all(),
         ]);
     }

@@ -17,18 +17,9 @@ class BazaarController extends Controller
     public function index()
     {
         return view('bazaar.index', [
+            'title'     => 'Bazar Subuh',
             'datas'     => Expanse::where('event', 'Bazaar')->get()
         ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
