@@ -113,13 +113,13 @@
         </li>
       </ul>
     </li>
-    {{-- <li class="">
-      <a href="">
+    <li class="{{ Request::is('bazaar**') ? 'mm-active' : '' }}">
+      <a href="/bazaar">
         <div class="parent-icon"><i class="bi bi-bag"></i>
         </div>
         <div class="menu-title">Bazar Subuh</div>
       </a>
-    </li> --}}
+    </li>
     {{-- <li class="">
       <a href="">
         <div class="parent-icon"><i class="bi bi-cart-dash"></i>

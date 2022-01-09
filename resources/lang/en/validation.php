@@ -167,6 +167,7 @@ return [
         'category'      => 'Tempat',
         'date_period'   => 'Periode',
         'buyer'         => 'Nama pembeli',
+        'date'          => 'Tanggal pelaksanaan'
     ],
 
 ];

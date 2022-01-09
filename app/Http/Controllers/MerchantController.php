@@ -51,7 +51,7 @@ class MerchantController extends Controller
 
         if ($request->hasFile('photo')) {
             // Uploading Photos
-            $validated['number'] = Merchant::orderBy('number', 'DESC')->first()->number + 1;
+            $validated['number'] = Merchant::orderBy('number', 'DESC')->first() ? Merchant::orderBy('number', 'DESC')->first()->number + 1 : 1;
             $validated['received_at'] = Carbon::now();
 
             $photoFile = $validated['number'] . '.' . $request->photo->extension();
@@ -227,7 +227,7 @@ class MerchantController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return back()->with('success', 'Data masih belum lengkap!');
+            return back()->with('failed', 'Data masih belum lengkap!');
         }
 
         $total = $merchant->incomes + $request->nominal;

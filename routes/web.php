@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BazaarController;
+use App\Http\Controllers\ExpanseController;
 use App\Http\Controllers\FridayController;
 use App\Http\Controllers\MerchantController;
 use App\Http\Controllers\StoreController;
@@ -47,4 +49,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('jumat-berkah', FridayController::class)->parameters([
         'jumat-berkah' => 'friday'
     ])->except('index', 'show');
+    Route::get('/getExpanseData/{expanse}', [BazaarController::class, 'getExpanseData']);
+    Route::resource('bazaar', BazaarController::class)->except('show', 'create', 'edit')->parameters([
+        'bazaar'    => 'expanse'
+    ]);
 });
