@@ -48,23 +48,21 @@ class MerchantController extends Controller
             'gender'    => 'required',
             'nominal'   => 'required|numeric',
             'address'   => 'required',
-            'photo'     => 'required|mimes:jpg,jpeg,png|max:2048'
+            'photo'     => 'nullable|mimes:jpg,jpeg,png|max:2048'
         ]);
 
-
+        $validated['number'] = Merchant::orderBy('number', 'DESC')->first() ? Merchant::orderBy('number', 'DESC')->first()->number + 1 : 1;
+        $validated['received_at'] = Carbon::now();
         if ($request->hasFile('photo')) {
             // Uploading Photos
-            $validated['number'] = Merchant::orderBy('number', 'DESC')->first() ? Merchant::orderBy('number', 'DESC')->first()->number + 1 : 1;
-            $validated['received_at'] = Carbon::now();
 
             $photoFile = $validated['number'] . '.' . $request->photo->extension();
             $request->photo->move(public_path('img/foto_pedagang'), $photoFile);
 
             $validated['photo'] = $photoFile;
-
-            Merchant::create($validated);
-            return redirect('pedagang/' . $validated['number'])->with('success', 'Pengeluaran telah dicatat dan Pedagang telah ditambahkan!');
         }
+        Merchant::create($validated);
+        return redirect('pedagang/' . $validated['number'])->with('success', 'Pengeluaran telah dicatat dan Pedagang telah ditambahkan!');
     }
 
     /**
