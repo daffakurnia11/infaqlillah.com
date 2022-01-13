@@ -82,18 +82,18 @@ $(function () {
     });
   });
 
-  // Add Expanses
-  $('.addButton').on('click', function () {
+  // Add Bazaar Expanses
+  $('.addBazaar').on('click', function () {
     $('#form-container').attr('action', '/bazaar');
-    $('.modal-title').html('Form Tambah Pengeluaran');
+    $('.modal-title').html('Form Tambah Pengeluaran Bazaar');
     $('input[name=_method').val('POST');
     $('#nominal').val('');
     $('#date').val('');
     $('.buttonSubmit').html('Tambah Pengeluaran!');
   })
 
-  // Edit Expanses
-  $('.editButton').on('click', function () {
+  // Edit Bazaar Expanses
+  $('.editBazaar').on('click', function () {
     const data = $(this).attr('data-expanses');
     console.log(data);
     $.ajax({
@@ -103,8 +103,42 @@ $(function () {
       success: function (data) {
         console.log(data)
         $('#form-container').attr('action', '/bazaar/' + data.id);
-        $('.modal-title').html('Form Edit Pengeluaran');
+        $('.modal-title').html('Form Edit Pengeluaran Bazaar');
         $('input[name=_method').val('PUT');
+        $('#nominal').val(data.nominal);
+        $('#date').val(data.date);
+        $('.buttonSubmit').html('Edit Pengeluaran!');
+      },
+      error: function (data) {
+        console.log(data);
+      }
+    });
+  });
+
+  // Add Other Expanses
+  $('.addExpanse').on('click', function () {
+    $('#form-container').attr('action', '/pengeluaran-lain');
+    $('.modal-title').html('Form Tambah Pengeluaran Lain');
+    $('input[name=_method').val('POST');
+    $('#nominal').val('');
+    $('#date').val('');
+    $('.buttonSubmit').html('Tambah Pengeluaran!');
+  })
+
+  // Edit Other Expanses
+  $('.editExpanse').on('click', function () {
+    const data = $(this).attr('data-expanses');
+    console.log(data);
+    $.ajax({
+      type: "GET",
+      url: '/getExpanseData/' + data,
+      dataType: 'json',
+      success: function (data) {
+        console.log(data)
+        $('#form-container').attr('action', '/pengeluaran-lain/' + data.id);
+        $('.modal-title').html('Form Edit Pengeluaran ' + data.event);
+        $('input[name=_method').val('PUT');
+        $('#event').val(data.event);
         $('#nominal').val(data.nominal);
         $('#date').val(data.date);
         $('.buttonSubmit').html('Edit Pengeluaran!');

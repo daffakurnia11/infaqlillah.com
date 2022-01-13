@@ -120,13 +120,13 @@
         <div class="menu-title">Bazar Subuh</div>
       </a>
     </li>
-    {{-- <li class="">
-      <a href="">
+    <li class="{{ Request::is('pengeluaran-lain**') ? 'mm-active' : '' }}">
+      <a href="/pengeluaran-lain">
         <div class="parent-icon"><i class="bi bi-cart-dash"></i>
         </div>
         <div class="menu-title">Lain-lain</div>
       </a>
-    </li> --}}
+    </li>
 
     {{-- <li class="menu-label">Galeri</li>
     <li class="">

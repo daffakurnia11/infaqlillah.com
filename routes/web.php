@@ -51,6 +51,7 @@ Route::middleware('auth')->group(function () {
         'toko' => 'store_income'
     ])->except('show');
 
+    // Jumat Berkah
     Route::prefix('jumat-berkah')->group(function () {
         Route::get('/aminah-al-fajr', [FridayController::class, 'aminah_al_fajr']);
         Route::get('/siwalan-panji', [FridayController::class, 'siwalan_panji']);
@@ -61,8 +62,15 @@ Route::middleware('auth')->group(function () {
     Route::resource('jumat-berkah', FridayController::class)->parameters([
         'jumat-berkah' => 'friday'
     ])->except('index', 'show');
-    Route::get('/getExpanseData/{expanse}', [BazaarController::class, 'getExpanseData']);
+
+    // Bazaar
     Route::resource('bazaar', BazaarController::class)->except('show', 'create', 'edit')->parameters([
         'bazaar'    => 'expanse'
+    ]);
+    Route::get('/getExpanseData/{expanse}', [BazaarController::class, 'getExpanseData']);
+
+    // Pengeluaran Lain
+    Route::resource('pengeluaran-lain', ExpanseController::class)->parameters([
+        'pengeluaran-lain' => 'expanse'
     ]);
 });

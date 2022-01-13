@@ -33,7 +33,7 @@ class BazaarController extends Controller
         $validator = Validator::make($request->all(), [
             'nominal'   => 'required|numeric',
             'date'      => 'required',
-            'photo'     => 'required|mimes:jpg,jpeg,png'
+            'photo'     => 'nullable|mimes:jpg,jpeg,png'
         ]);
 
         if ($validator->fails()) {
@@ -79,7 +79,8 @@ class BazaarController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'nominal'   => 'required|numeric',
-            'date'      => 'required'
+            'date'      => 'required',
+            'photo'     => 'nullable|mimes:jpg,jpeg,png'
         ]);
 
         if ($validator->fails()) {
@@ -115,7 +116,9 @@ class BazaarController extends Controller
      */
     public function destroy(Expanse $expanse)
     {
-        unlink(public_path('img/foto_bazaar/' . $expanse->photo));
+        if ($expanse->photo) {
+            unlink(public_path('img/foto_bazaar/' . $expanse->photo));
+        }
 
         $expanse->delete();
         return back()->with('success', 'Pengeluaran bazaar subuh berhasil dihapus!');
