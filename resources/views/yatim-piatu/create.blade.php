@@ -8,7 +8,7 @@
     
 <!--breadcrumb-->
 <div class="page-breadcrumb d-flex align-items-center flex-column flex-md-row mb-3">
-  <div class="breadcrumb-title pe-3 border-0">Jumat Berkah</div>
+  <div class="breadcrumb-title pe-3 border-0">Yatim Piatu</div>
   <div class="ms-md-auto me-md-0 mx-auto ps-3">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb mb-0 p-0">
@@ -16,7 +16,7 @@
           <a href="/"><i class="bx bx-home-alt"></i> Dashboard</a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">
-          <i class="bi bi-gift"></i> Jumat Berkah
+          <i class="bi bi-house"></i> Yatim Piatu
         </li>
         <li class="breadcrumb-item active" aria-current="page">
           Tambah Pengeluaran
@@ -34,26 +34,24 @@
     <div class="card">
       <div class="card-body">
         <div class="border p-3 rounded">
-          <form action="/jumat-berkah" method="POST" class="row g-3" enctype="multipart/form-data">
+          <form action="/yatim-piatu" method="POST" class="row g-3" enctype="multipart/form-data">
             @csrf
             <div class="col-12">
-              <label class="form-label">Nama Penanggungjawab</label>
-              <input type="text" class="form-control @error('in_charge') is-invalid @enderror" name="in_charge" value="{{ old('in_charge') }}" tabindex="1" autofocus>
-              @error('in_charge')
+              <label class="form-label">Nama Pemilik/Penerima</label>
+              <input type="text" class="form-control @error('receiver') is-invalid @enderror" name="receiver" value="{{ old('receiver') }}" tabindex="1" autofocus>
+              @error('receiver')
               <div class="invalid-feedback">
                 {{ $message }}
               </div>
               @enderror
             </div>
             <div class="col-12">
-              <label class="form-label">Tempat</label>
+              <label class="form-label">Yayasan</label>
               <select class="form-select @error('category') is-invalid @enderror" name="category" id="category" aria-label="Default select example" tabindex="2">
-                <option selected="" disabled>-- Pilih tempat --</option>
-                <option value="Masjid Aminah Al-Fajr" {{ old('category') == 'Masjid Aminah Al-Fajr' ? 'selected' : '' }}>Masjid Aminah Al-Fajr</option>
-                <option value="Masjid Siwalan Panji" {{ old('category') == 'Masjid Siwalan Panji' ? 'selected' : '' }}>Masjid Siwalan Panji</option>
-                <option value="Buduran" {{ old('category') == 'Buduran' ? 'selected' : '' }}>Buduran</option>
-                <option value="Gedangan" {{ old('category') == 'Gedangan' ? 'selected' : '' }}>Gedangan</option>
-                <option value="Tulungagung" {{ old('category') == 'Tulungagung' ? 'selected' : '' }}>Tulungagung</option>
+                <option selected="" disabled>-- Pilih Yayasan --</option>
+                <option value="Yayasan Nurussalam" {{ old('category') == 'Yayasan Nurussalam' ? 'selected' : '' }}>Yayasan Nurussalam</option>
+                <option value="Yayasan Al Firdaus" {{ old('category') == 'Yayasan Al Firdaus' ? 'selected' : '' }}>Yayasan Al Firdaus</option>
+                <option value="Yayasan Al Kahfi" {{ old('category') == 'Yayasan Al Kahfi' ? 'selected' : '' }}>Yayasan Al Kahfi</option>
               </select>
               @error('category')
               <div class="invalid-feedback">
@@ -76,8 +74,22 @@
             </div>
             <div class="col-12">
               <label class="form-label">Periode</label>
-              <input class="result form-control @error('date_period') is-invalid @enderror" type="text" name="date_period" id="date" placeholder="Klik untuk pilih tanggal.." value="{{ old('date_period') }}" tabindex="4">
-              @error('date_period')
+              <select class="form-select @error('period') is-invalid @enderror" name="period" aria-label="Default select example" tabindex="4">
+                <option selected="" disabled>--PILIH PERIODE--</option>
+                <option value="Januari">Januari</option>
+                <option value="Februari">Februari</option>
+                <option value="Maret">Maret</option>
+                <option value="April">April</option>
+                <option value="Mei">Mei</option>
+                <option value="Juni">Juni</option>
+                <option value="Juli">Juli</option>
+                <option value="Agustus">Agustus</option>
+                <option value="September">September</option>
+                <option value="Oktober">Oktober</option>
+                <option value="November">November</option>
+                <option value="Desember">Desember</option>
+              </select>
+              @error('period')
               <div class="invalid-feedback">
                 {{ $message }}
               </div>

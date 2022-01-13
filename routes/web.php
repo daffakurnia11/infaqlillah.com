@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BazaarController;
 use App\Http\Controllers\DonorController;
 use App\Http\Controllers\ExpanseController;
+use App\Http\Controllers\FoundationController;
 use App\Http\Controllers\FridayController;
 use App\Http\Controllers\MerchantController;
 use App\Http\Controllers\StoreController;
@@ -73,4 +74,14 @@ Route::middleware('auth')->group(function () {
     Route::resource('pengeluaran-lain', ExpanseController::class)->parameters([
         'pengeluaran-lain' => 'expanse'
     ]);
+
+    // Yatim Piatu
+    Route::prefix('yatim-piatu')->group(function () {
+        Route::get('/nurussalam', [FoundationController::class, 'nurussalam']);
+        Route::get('/al-firdaus', [FoundationController::class, 'al_firdaus']);
+        Route::get('/al-kahfi', [FoundationController::class, 'al_kahfi']);
+    });
+    Route::resource('yatim-piatu', FoundationController::class)->parameters([
+        'yatim-piatu' => 'foundation'
+    ])->except('index', 'show');
 });

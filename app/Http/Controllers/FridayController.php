@@ -99,7 +99,7 @@ class FridayController extends Controller
                 $slug = 'tulungagung';
                 break;
         }
-        return redirect('jumat-berkah/' . $slug)->with('success', 'Data pengeluaran berhasil ditambahkan!');
+        return redirect('jumat-berkah/' . $slug)->with('success', 'Data pengeluaran jumat berkah berhasil ditambahkan!');
     }
 
     /**
@@ -137,9 +137,12 @@ class FridayController extends Controller
         if ($request->hasFile('photo')) {
             // Remove last photos
             if ($friday->photo) {
-                $oldphoto = $friday->photo;
-                unlink(public_path('img/foto_jumat/' . $oldphoto));
+                if ($friday->category != $validated['category']) {
+                    $oldphoto = $friday->photo;
+                    unlink(public_path('img/foto_jumat/' . $oldphoto));
+                }
             }
+
             // Uploading Photos
             $fileName = $validated['date_period'] . '_' . $validated['category'] . '.' . $request->photo->extension();
             $request->photo->move(public_path('img/foto_jumat'), $fileName);
@@ -165,7 +168,7 @@ class FridayController extends Controller
                 $slug = 'tulungagung';
                 break;
         }
-        return redirect('jumat-berkah/' . $slug)->with('success', 'Data pengeluaran berhasil diubah!');
+        return redirect('jumat-berkah/' . $slug)->with('success', 'Data pengeluaran jumat berkah berhasil diubah!');
     }
 
     /**
@@ -176,7 +179,9 @@ class FridayController extends Controller
      */
     public function destroy(Friday $friday)
     {
-        unlink(public_path('img/foto_jumat/' . $friday->photo));
+        if ($friday->photo) {
+            unlink(public_path('img/foto_jumat/' . $friday->photo));
+        }
 
         switch ($friday->category) {
             case 'Masjid Aminah Al-Fajr':
@@ -196,6 +201,6 @@ class FridayController extends Controller
                 break;
         }
         $friday->delete();
-        return redirect('jumat-berkah/' . $slug)->with('success', 'Data pengeluaran berhasil diubah!');
+        return redirect('jumat-berkah/' . $slug)->with('success', 'Data pengeluaran jumat berkah berhasil dihapus!');
     }
 }

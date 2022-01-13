@@ -169,7 +169,8 @@ return [
         'buyer'         => 'Nama pembeli',
         'date'          => 'Tanggal pelaksanaan',
         'period'        => 'Periode',
-        'first_donate'  => 'Infaq awal'
+        'first_donate'  => 'Infaq awal',
+        'receiver'      => 'Nama pemilik/penerima'
     ],
 
 ];

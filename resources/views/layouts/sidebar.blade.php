@@ -55,30 +55,30 @@
         <div class="menu-title">Modal Pedagang</div>
       </a>
     </li>
-    {{-- <li class="">
+    <li class="">
       <a class="has-arrow" href="#" aria-expanded="true">
         <div class="parent-icon"><i class="bi bi-house"></i>
         </div>
         <div class="menu-title">Yatim Piatu</div>
       </a>
-      <ul class="mm-collapse" style="">
-        <li class=""> 
-          <a href=""><i class="bi bi-arrow-right-short"></i>
-            A
+      <ul class="mm-collapse {{ Request::is('yatim-piatu**') ? 'mm-show' : '' }}" style="">
+        <li class="{{ Request::is('yatim-piatu/nurussalam') ? 'mm-active' : '' }}"> 
+          <a href="/yatim-piatu/nurussalam"><i class="bi bi-arrow-right-short"></i>
+            Yayasan Nurussalam
           </a>
         </li>
-        <li class=""> 
-          <a href=""><i class="bi bi-arrow-right-short"></i>
-            A
+        <li class="{{ Request::is('yatim-piatu/al-firdaus') ? 'mm-active' : '' }}"> 
+          <a href="/yatim-piatu/al-firdaus"><i class="bi bi-arrow-right-short"></i>
+            Yayasan Al Firdaus
           </a>
         </li>
-        <li class=""> 
-          <a href=""><i class="bi bi-arrow-right-short"></i>
-            A
+        <li class="{{ Request::is('yatim-piatu/al-kahfi') ? 'mm-active' : '' }}"> 
+          <a href="/yatim-piatu/al-kahfi"><i class="bi bi-arrow-right-short"></i>
+            Yayasan Al Kahfi
           </a>
         </li>
       </ul>
-    </li> --}}
+    </li>
     <li class="">
       <a class="has-arrow" href="#" aria-expanded="true">
         <div class="parent-icon"><i class="bi bi-gift"></i>
