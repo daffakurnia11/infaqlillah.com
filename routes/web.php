@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BazaarController;
+use App\Http\Controllers\DonorController;
 use App\Http\Controllers\ExpanseController;
 use App\Http\Controllers\FridayController;
 use App\Http\Controllers\MerchantController;
@@ -25,6 +26,8 @@ Route::post('/login', [AdminController::class, 'authentication']);
 Route::middleware('auth')->group(function () {
     Route::get('/', [AdminController::class, 'index']);
     Route::post('/logout', [AdminController::class, 'logout']);
+
+    // Infaq Pedagang
     Route::resource('pedagang', MerchantController::class)->parameters([
         'pedagang' => 'merchant'
     ]);
@@ -35,6 +38,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/getMerchantData/{merchant}', [MerchantController::class, 'getMerchantData']);
     Route::post('/addIncome/{merchant}', [MerchantController::class, 'addIncome']);
 
+    // Infaq Donatur
+    Route::resource('donatur', DonorController::class)->parameters([
+        'donatur'   => 'donor'
+    ]);
+    Route::get('/donorIncomeData/{donor}', [DonorController::class, 'donorIncomeData']);
+    Route::get('/getDonorData/{donor}', [DonorController::class, 'getDonorData']);
+    Route::post('/addDonorIncome/{donor}', [DonorController::class, 'addIncome']);
+
+    // Infaq Toko
     Route::resource('toko', StoreController::class)->parameters([
         'toko' => 'store_income'
     ])->except('show');

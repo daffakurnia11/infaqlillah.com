@@ -66,6 +66,21 @@ $(function () {
       }
     });
   });
+  // Add Donor Income
+  $('.donorIncomeButton').on('click', function () {
+    const data = $(this).attr('data-number');
+    $.ajax({
+      type: "GET",
+      url: '/getDonorData/' + data,
+      dataType: 'json',
+      success: function (data) {
+        console.log(data)
+        $('#name').val(data.name)
+        $('#donor_id').val(data.id)
+        $('#form-container').attr('action', '/addDonorIncome/' + data.id)
+      }
+    });
+  });
 
   // Add Expanses
   $('.addButton').on('click', function () {
@@ -100,77 +115,3 @@ $(function () {
     });
   });
 });
-
-// chart 1
-var ctx = document.getElementById('chart1').getContext('2d');
-var incomeChart = new Chart(ctx, {
-  type: 'line',
-  data: {
-    labels: [],
-    datasets: [{
-      label: 'Data Infaq',
-      data: [],
-      backgroundColor: "transparent",
-      borderColor: "#3461ff",
-      borderWidth: 4
-    }]
-  },
-  options: {
-    maintainAspectRatio: true,
-    legend: {
-      display: true,
-      labels: {
-        fontColor: '#585757',
-        boxWidth: 40
-      }
-    },
-    tooltips: {
-      enabled: true
-    },
-    scales: {
-      xAxes: [{
-        ticks: {
-          beginAtZero: true,
-          autoSkip: false,
-          fontColor: '#585757'
-        },
-        gridLines: {
-          display: true,
-          color: "rgba(0, 0, 0, 0.07)"
-        },
-
-      }],
-
-      yAxes: [{
-        ticks: {
-          beginAtZero: true,
-          fontColor: '#585757',
-        },
-        gridLines: {
-          display: true,
-          color: "rgba(0, 0, 0, 0.07)"
-        },
-      }]
-    }
-  }
-});
-
-var updateChart = function () {
-  const number = $('#chart1').data('merchant');
-  console.log(number);
-  $.ajax({
-    url: window.location.origin + '/getIncomeData/' + number,
-    type: 'GET',
-    dataType: 'json',
-    success: function (data) {
-      incomeChart.data.labels = data.period;
-      incomeChart.data.datasets[0].data = data.nominal;
-      incomeChart.update();
-    },
-    error: function (data) {
-      console.log(data)
-    }
-  });
-}
-
-updateChart();

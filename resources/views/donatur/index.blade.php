@@ -1,14 +1,14 @@
 @extends('layouts.main')
 
 @section('content')
-
-@if (session()->has('message'))
-  <div id="notifications" data-notification="{{ session('message') }}"></div>
-@endif
     
+@if (session()->has('success') || session()->has('failed'))
+  <div id="notifications" data-success="{{ session('success') }}" data-failed="{{ session('failed') }}"></div>
+@endif
+
 <!--breadcrumb-->
 <div class="page-breadcrumb d-flex align-items-center flex-column flex-md-row mb-3">
-  <div class="breadcrumb-title pe-3 border-0">Infaq Pedagang</div>
+  <div class="breadcrumb-title pe-3 border-0">Donatur</div>
   <div class="ms-md-auto me-md-0 mx-auto ps-3">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb mb-0 p-0">
@@ -16,7 +16,7 @@
           <a href="/"><i class="bx bx-home-alt"></i> Dashboard</a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">
-          <i class="bi bi-shop"></i> Infaq Pedagang
+          <i class="bi bi-people-fill"></i> Donatur
         </li>
       </ol>
     </nav>
@@ -24,7 +24,10 @@
 </div>
 <!--end breadcrumb-->
 
-<h6 class="mb-0 text-uppercase">Data Semua Infaq Pedagang</h6>
+<h6 class="mb-0 text-uppercase d-flex justify-content-between align-items-center">
+  <span>Data Seluruh Donatur</span>
+  <a href="/donatur/create" class="btn btn-sm btn-primary">Tambah Donatur</a>
+</h6>
 <hr/>
 <div class="card">
   <div class="card-body">
@@ -34,23 +37,32 @@
           <tr>
             <th>Nomor</th>
             <th>Nama</th>
-            <th>Status</th>
+            <th>Jenis Kelamin</th>
+            <th>Alamat</th>
             <th>Total Infaq</th>
+            <th>Tanggal Daftar</th>
             <th>Aksi</th>
           </tr>
         </thead>
         <tbody>
-          @foreach ($merchants as $merchant)
+          @foreach ($donors as $donor)
             <tr>
-              <td class="align-middle text-center text-nowrap">{{ $merchant->number }}</td>
-              <td class="align-middle text-nowrap">{{ $merchant->name }}</td>
-              <td class="align-middle text-center text-nowrap">{{ $merchant->status }}</td>
-              <td class="align-middle text-center text-nowrap">{{ $merchant->incomes }}</td>
+              <td class="align-middle text-center text-nowrap">{{ $loop->iteration }}</td>
+              <td class="align-middle text-nowrap">{{ $donor->name }}</td>
+              <td class="align-middle text-nowrap">{{ $donor->gender }}</td>
+              <td class="align-middle text-wrap">{{ $donor->address }}</td>
+              <td class="align-middle text-wrap">{{ $donor->donate }}</td>
+              <td class="align-middle text-center text-nowrap">{{ $donor->created_at }}</td>
               <td class="align-middle text-nowrap">
-                <div class="d-flex align-items-center justify-content-center fs-6">
-                  <a href="/pedagang/{{ $merchant->number }}" class="mx-3 text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Detail" aria-label="Detail"><i class="bi bi-eye-fill"></i> Detail</a>
-                  <a href="/pedagang/{{ $merchant->number }}/edit" data-bs-toggle="modal" data-bs-target="#addNewIncome" class="mx-3 text-success addIncomeButton" data-number="{{ $merchant->number }}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Tambah Infaq" aria-label="Tambah Infaq"><i class="bi bi-plus"></i>Tambah Infaq</a>
-                  {{-- <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Hapus" aria-label="Hapus"><i class="bi bi-trash-fill"></i></a> --}}
+                <div class="table-actions d-flex align-items-center justify-content-center gap-3 fs-6">
+                  <a href="/donatur/{{ $donor->id }}" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Detail" aria-label="Detail"><i class="bi bi-eye-fill"></i></a>
+                  <a href="/donatur/{{ $donor->id }}/edit" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Ubah" aria-label="Ubah"><i class="bi bi-pencil-fill"></i></a>
+                  <form action="/donatur/{{ $donor->id }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="text-danger bg-transparent border-0 p-0 m-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Hapus" aria-label="Hapus" onclick="return confirm('Apakah data ingin dihapus?');"><i class="bi bi-trash-fill"></i></button>
+                  </form>
+                  <button type="button" data-bs-toggle="modal" data-bs-target="#addNewIncome" class="btn text-success donorIncomeButton p-0" data-number="{{ $donor->id }}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tambah Infaq" data-bs-original-title="Tambah Infaq" aria-label="Tambah Infaq"><i class="bi bi-plus"></i> Tambah Infaq</button>
                 </div>
               </td>
             </tr>
@@ -60,8 +72,10 @@
           <tr>
             <th>Nomor</th>
             <th>Nama</th>
-            <th>Status</th>
+            <th>Jenis Kelamin</th>
+            <th>Alamat</th>
             <th>Total Infaq</th>
+            <th>Tanggal Daftar</th>
             <th>Aksi</th>
           </tr>
         </tfoot>
@@ -77,14 +91,10 @@
         <h5 class="modal-title">Form Tambah Infaq</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="/addIncome/" method="POST" id="form-container">
+      <form action="/addDonorIncome/" method="POST" id="form-container">
         @csrf
-        <input type="hidden" class="form-control" id="merchant_id" name="merchant_id" value="">
+        <input type="hidden" class="form-control" id="donor_id" name="donor_id" value="">
         <div class="modal-body">
-          <div class="mb-3">
-            <label class="form-label">Nomor Pedagang</label>
-            <input type="text" class="form-control" name="number" id="number" value="" readonly>
-          </div>
           <div class="mb-3">
             <label class="form-label">Nama Pedagang</label>
             <input type="text" class="form-control" name="name" id="name" value="" readonly>

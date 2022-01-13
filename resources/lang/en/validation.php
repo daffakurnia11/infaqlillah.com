@@ -110,7 +110,7 @@ return [
     'required' => ':attribute harus diisi!',
     'required_if' => 'The :attribute field is required when :other is :value.',
     'required_unless' => 'The :attribute field is required unless :other is in :values.',
-    'required_with' => 'The :attribute field is required when :values is present.',
+    'required_with' => ':attribute harus diisi jika :values juga diisi.',
     'required_with_all' => 'The :attribute field is required when :values are present.',
     'required_without' => 'The :attribute field is required when :values is not present.',
     'required_without_all' => 'The :attribute field is required when none of :values are present.',
@@ -167,7 +167,9 @@ return [
         'category'      => 'Tempat',
         'date_period'   => 'Periode',
         'buyer'         => 'Nama pembeli',
-        'date'          => 'Tanggal pelaksanaan'
+        'date'          => 'Tanggal pelaksanaan',
+        'period'        => 'Periode',
+        'first_donate'  => 'Infaq awal'
     ],
 
 ];

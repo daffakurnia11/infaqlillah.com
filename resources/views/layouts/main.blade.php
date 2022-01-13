@@ -18,8 +18,7 @@
   <link href="/vendor/bootstrap/dist/css/bootstrap-extended.css" rel="stylesheet" />
   <link href="/css/style.css" rel="stylesheet" />
   <link href="/css/icons.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
   <!-- Datepicker -->
 	<link rel="stylesheet" href="/vendor/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.min.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -31,6 +30,9 @@
   <link href="/css/header-colors.css" rel="stylesheet" />
 
   <script src="/vendor/jquery/dist/jquery.js"></script>
+  <!-- Chartjs -->
+  <script src="/vendor/chartjs/js/Chart.min.js"></script>
+  <script src="/vendor/chartjs/js/Chart.extension.js"></script>
 
   <title>{{ $title }} | Infaqlillah Admin</title>
 </head>
@@ -78,9 +80,6 @@
 <!--notification js -->
 <script src="/vendor/notifications/js/lobibox.min.js"></script>
 <script src="/vendor/notifications/js/notifications.min.js"></script>
-<!-- Chartjs -->
-<script src="/vendor/chartjs/js/Chart.min.js"></script>
-<script src="/vendor/chartjs/js/Chart.extension.js"></script>
 <!-- Datepicker -->
 <script src="/vendor/bootstrap-material-datetimepicker/js/moment.min.js"></script>
 <script src="/vendor/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.min.js"></script>
