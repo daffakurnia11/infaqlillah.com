@@ -7,6 +7,7 @@ use App\Http\Controllers\ExpanseController;
 use App\Http\Controllers\FoundationController;
 use App\Http\Controllers\FridayController;
 use App\Http\Controllers\MerchantController;
+use App\Http\Controllers\ShopController;
 use App\Http\Controllers\StoreController;
 use Illuminate\Support\Facades\Route;
 
@@ -65,15 +66,15 @@ Route::middleware('auth')->group(function () {
     ])->except('index', 'show');
 
     // Bazaar
-    Route::resource('bazaar', BazaarController::class)->except('show', 'create', 'edit')->parameters([
+    Route::resource('bazaar', BazaarController::class)->parameters([
         'bazaar'    => 'expanse'
-    ]);
+    ])->except(['show', 'create', 'edit']);
     Route::get('/getExpanseData/{expanse}', [BazaarController::class, 'getExpanseData']);
 
     // Pengeluaran Lain
     Route::resource('pengeluaran-lain', ExpanseController::class)->parameters([
         'pengeluaran-lain' => 'expanse'
-    ]);
+    ])->except(['create', 'show', 'edit']);
 
     // Yatim Piatu
     Route::prefix('yatim-piatu')->group(function () {
@@ -84,4 +85,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('yatim-piatu', FoundationController::class)->parameters([
         'yatim-piatu' => 'foundation'
     ])->except('index', 'show');
+
+    // Modal Toko
+    Route::resource('modal-toko', ShopController::class)->parameters([
+        'modal-toko' => 'expanse'
+    ])->except(['create', 'show', 'edit']);
 });

@@ -8,7 +8,7 @@
 
 <!--breadcrumb-->
 <div class="page-breadcrumb d-flex align-items-center flex-column flex-md-row mb-3">
-  <div class="breadcrumb-title pe-3 border-0">Pengeluaran Lain-lain</div>
+  <div class="breadcrumb-title pe-3 border-0">Modal Toko</div>
   <div class="ms-md-auto me-md-0 mx-auto ps-3">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb mb-0 p-0">
@@ -16,7 +16,7 @@
           <a href="/"><i class="bx bx-home-alt"></i> Dashboard</a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">
-          <i class="bi bi-cart-dash"></i> Pengeluaran Lain
+          <i class="bi bi-cart-dash"></i> Modal Toko
         </li>
       </ol>
     </nav>
@@ -25,8 +25,8 @@
 <!--end breadcrumb-->
 
 <h6 class="mb-0 text-uppercase d-flex justify-content-between align-items-center">
-  <span>Data Pengeluaran Lain-lain</span>
-  <a href="/jumat-berkah/create" data-bs-toggle="modal" data-bs-target="#expanseModal" class="btn btn-sm btn-primary addExpanse">Tambah Pengeluaran</a>
+  <span>Data Modal Toko</span>
+  <a href="/modal-toko/create" data-bs-toggle="modal" data-bs-target="#expanseModal" class="btn btn-sm btn-primary addShopExpanse">Tambah Pengeluaran</a>
 </h6>
 <hr/>
 <div class="row">
@@ -39,10 +39,9 @@
             <thead>
               <tr>
                 <th>Nomor</th>
-                <th>Keterangan</th>
                 <th>Nominal</th>
+                <th>Keterangan</th>
                 <th>Tanggal Pengeluaran</th>
-                <th>Dokumentasi</th>
                 <th>Aksi</th>
               </tr>
             </thead>
@@ -50,21 +49,14 @@
               @foreach ($datas as $data)
               <tr>
                 <td class="align-middle text-center text-nowrap">{{ $loop->iteration }}</td>
-                <td class="align-middle text-nowrap">{{ $data->event }}</td>
                 <td class="align-middle text-nowrap">{{ $data->nominal }}</td>
+                <td class="align-middle text-nowrap">{{ $data->notes }}</td>
                 <td class="align-middle text-wrap">{{ $data->date }}</td>
-                <td class="align-middle text-center text-nowrap">
-                  @if ($data->photo)
-                  <a href="/img/foto_lain/{{ $data->photo }}" target="_blank"><i class="bi bi-eye-fill"></i> Lihat Foto</a>
-                  @else
-                  <i>Tidak ada foto</i>
-                  @endif
-                </td>
                 <td class="align-middle text-nowrap">
                   <div class="table-actions d-flex align-items-center justify-content-center gap-3 fs-6">
                     {{-- <a href="/toko/{{ $data->id }}" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Detail" aria-label="Detail"><i class="bi bi-eye-fill"></i></a> --}}
-                    <button type="button" class="btn btn-sm p-0 text-warning editExpanse" data-bs-toggle="modal" data-bs-target="#expanseModal" data-expanses="{{ $data->id }}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Ubah" aria-label="Ubah"><i class="bi bi-pencil-fill"></i></button>
-                    <form action="/pengeluaran-lain/{{ $data->id }}" method="POST">
+                    <button type="button" class="btn btn-sm p-0 text-warning editShopExpanse" data-bs-toggle="modal" data-bs-target="#expanseModal" data-expanses="{{ $data->id }}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Ubah" aria-label="Ubah"><i class="bi bi-pencil-fill"></i></button>
+                    <form action="/modal-toko/{{ $data->id }}" method="POST">
                       @csrf
                       @method('DELETE')
                       <button type="submit" class="text-danger bg-transparent border-0 p-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Hapus" aria-label="Hapus" onclick="return confirm('Apakah data ingin dihapus?');"><i class="bi bi-trash-fill"></i></button>
@@ -77,10 +69,9 @@
             <tfoot>
               <tr>
                 <th>Nomor</th>
-                <th>Keterangan</th>
                 <th>Nominal</th>
+                <th>Keterangan</th>
                 <th>Tanggal Pengeluaran</th>
-                <th>Dokumentasi</th>
                 <th>Aksi</th>
               </tr>
             </tfoot>
@@ -98,29 +89,25 @@
         <h5 class="modal-title">Form Tambah Pengeluaran Bazaar</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="/pengeluaran-lain" method="POST" id="form-container" enctype="multipart/form-data">
+      <form action="/modal-toko" method="POST" id="form-container" enctype="multipart/form-data">
         @csrf
         @method('POST')
         <div class="modal-body">
           <div class="col-12">
-            <label class="form-label">Keterangan Pengeluaran</label>
-            <input class="form-control" type="text" name="event" id="event" value="{{ old('event') }}" tabindex="1" autofocus>
-          </div>
-          <div class="col-12 mt-3">
             <label class="form-label">Nominal</label>
             <div class="input-group"> 
               <span class="input-group-text">Rp</span>
-              <input type="text" class="form-control" name="nominal" id="nominal" value="{{ old('nominal') }}" tabindex="2">
+              <input type="text" class="form-control" name="nominal" id="nominal" value="{{ old('nominal') }}" tabindex="1" autofocus>
               <span class="input-group-text">.00</span>
             </div>
           </div>
           <div class="col-12 mt-3">
-            <label class="form-label">Tanggal Pelaksanaan</label>
-            <input class="result form-control" type="text" name="date" id="date" placeholder="Klik untuk pilih tanggal.." value="{{ old('date') }}" tabindex="3">
+            <label class="form-label">Keterangan Pengeluaran</label>
+            <textarea class="form-control" type="text" name="notes" id="notes" value="{{ old('notes') }}" tabindex="2"></textarea>
           </div>
           <div class="col-12 mt-3">
-            <label class="form-label">Dokumentasi</label>
-            <input type="file" class="form-control" name="photo" accept=".jpg,.jpeg,.png" tabindex="4">
+            <label class="form-label">Tanggal Pengeluaran</label>
+            <input class="result form-control" type="text" name="date" id="date" placeholder="Klik untuk pilih tanggal.." value="{{ old('date') }}" tabindex="3">
           </div>
         </div>
         <div class="modal-footer">

@@ -10,6 +10,6 @@ class Expanse extends Model
     use HasFactory;
 
     protected $fillable = [
-        'event', 'nominal', 'date', 'photo'
+        'event', 'nominal', 'date', 'photo', 'notes'
     ];
 }

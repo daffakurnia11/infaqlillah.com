@@ -55,6 +55,13 @@
         <div class="menu-title">Modal Pedagang</div>
       </a>
     </li>
+    <li class="{{ Request::is('modal-toko**') ? 'mm-active' : '' }}">
+      <a href="/modal-toko">
+        <div class="parent-icon"><i class="bi bi-basket"></i>
+        </div>
+        <div class="menu-title">Modal Toko</div>
+      </a>
+    </li>
     <li class="">
       <a class="has-arrow" href="#" aria-expanded="true">
         <div class="parent-icon"><i class="bi bi-house"></i>

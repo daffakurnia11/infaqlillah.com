@@ -6,7 +6,7 @@ use App\Models\Expanse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class ExpanseController extends Controller
+class ShopController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class ExpanseController extends Controller
      */
     public function index()
     {
-        return view('pengeluaran-lain.index', [
-            'title'     => 'Pengeluaran Lain-lain',
-            'datas'     => Expanse::where('event', '!=', 'Bazaar')->where('event', '!=', 'Modal Toko')->get()
+        return view('pengeluaran-toko.index', [
+            'title'     => 'Modal Toko',
+            'datas'     => Expanse::where('event', 'Modal Toko')->get()
         ]);
     }
 
@@ -30,31 +30,22 @@ class ExpanseController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'event'     => 'required',
+            'notes'     => 'required',
             'nominal'   => 'required|numeric',
             'date'      => 'required',
-            'photo'     => 'nullable|mimes:jpg,jpeg,png'
         ]);
 
         if ($validator->fails()) {
             return back()->with('failed', 'Data terdapat kesalahan atau belum lengkap!');
         }
 
-        if ($request->hasFile('photo')) {
-            $fileName = $request->date . '_Pengeluaran Lain.' . $request->photo->extension();
-            $request->photo->move(public_path('img/foto_lain'), $fileName);
-            $photo = $fileName;
-        } else {
-            $photo = NULL;
-        }
-
         Expanse::create([
-            'event'     => $request->event,
+            'event'     => 'Modal Toko',
+            'notes'     => $request->notes,
             'nominal'   => $request->nominal,
             'date'      => $request->date,
-            'photo'     => $photo
         ]);
-        return back()->with('success', 'Pengeluaran telah berhasil ditambahkan!');
+        return back()->with('success', 'Modal toko telah berhasil ditambahkan!');
     }
 
     /**
@@ -67,36 +58,24 @@ class ExpanseController extends Controller
     public function update(Request $request, Expanse $expanse)
     {
         $validator = Validator::make($request->all(), [
-            'event'     => 'required',
+            'notes'     => 'required',
             'nominal'   => 'required|numeric',
             'date'      => 'required',
-            'photo'     => 'nullable|mimes:jpg,jpeg,png'
         ]);
 
         if ($validator->fails()) {
             return back()->with('failed', 'Data terdapat kesalahan atau belum lengkap!');
         }
 
-        if ($request->hasFile('photo')) {
-            // Remove last photos
-            if ($expanse->photo) {
-                unlink(public_path('img/foto_lain/' . $expanse->photo));
-            }
-            $fileName = $request->date . '_Pengeluaran Lain.' . $request->photo->extension();
-            $request->photo->move(public_path('img/foto_lain'), $fileName);
-            $photo = $fileName;
-        } else {
-            $photo = NULL;
-        }
         $validated = [
-            'event'     => $request->event,
+            'event'     => 'Modal Toko',
+            'notes'     => $request->notes,
             'nominal'   => $request->nominal,
             'date'      => $request->date,
-            'photo'     => $photo
         ];
 
         $expanse->update($validated);
-        return back()->with('success', 'Pengeluaran lain telah berhasil diubah!');
+        return back()->with('success', 'Modal toko telah berhasil diubah!');
     }
 
     /**
@@ -107,11 +86,7 @@ class ExpanseController extends Controller
      */
     public function destroy(Expanse $expanse)
     {
-        if ($expanse->photo) {
-            unlink(public_path('img/foto_lain/' . $expanse->photo));
-        }
-
         $expanse->delete();
-        return back()->with('success', 'Pengeluaran lain telah berhasil dihapus!');
+        return back()->with('success', 'Modal toko telah berhasil dihapus!');
     }
 }

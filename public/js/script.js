@@ -148,4 +148,39 @@ $(function () {
       }
     });
   });
+
+  // Add Shop Expanse
+  $('.addShopExpanse').on('click', function () {
+    $('#form-container').attr('action', '/modal-toko');
+    $('.modal-title').html('Form Tambah Modal Toko');
+    $('input[name=_method').val('POST');
+    $('#nominal').val('');
+    $('#notes').html();
+    $('#date').val('');
+    $('.buttonSubmit').html('Tambah Pengeluaran!');
+  })
+
+  // Edit Shop Expanse
+  $('.editShopExpanse').on('click', function () {
+    const data = $(this).attr('data-expanses');
+    console.log(data);
+    $.ajax({
+      type: "GET",
+      url: '/getExpanseData/' + data,
+      dataType: 'json',
+      success: function (data) {
+        console.log(data)
+        $('#form-container').attr('action', '/modal-toko/' + data.id);
+        $('.modal-title').html('Form Edit Modal Toko');
+        $('input[name=_method').val('PUT');
+        $('#notes').html(data.notes);
+        $('#nominal').val(data.nominal);
+        $('#date').val(data.date);
+        $('.buttonSubmit').html('Edit Pengeluaran!');
+      },
+      error: function (data) {
+        console.log(data);
+      }
+    });
+  });
 });
