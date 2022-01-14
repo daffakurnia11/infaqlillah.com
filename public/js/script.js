@@ -184,3 +184,295 @@ $(function () {
     });
   });
 });
+
+$(function () {
+  var ctx = document.getElementById('merchantOverall').getContext('2d');
+  var incomeChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: [],
+      datasets: [{
+        label: 'Data Infaq Pedagang',
+        data: [],
+        backgroundColor: "transparent",
+        borderColor: "#3461ff",
+        borderWidth: 4
+      }]
+    },
+    options: {
+      maintainAspectRatio: true,
+      legend: {
+        display: true,
+        labels: {
+          fontColor: '#585757',
+          boxWidth: 40
+        }
+      },
+      tooltips: {
+        enabled: true
+      },
+      scales: {
+        xAxes: [{
+          ticks: {
+            beginAtZero: true,
+            autoSkip: false,
+            fontColor: '#585757'
+          },
+          gridLines: {
+            display: true,
+            color: "rgba(0, 0, 0, 0.07)"
+          },
+
+        }],
+
+        yAxes: [{
+          ticks: {
+            beginAtZero: true,
+            fontColor: '#585757',
+          },
+          gridLines: {
+            display: true,
+            color: "rgba(0, 0, 0, 0.07)"
+          },
+        }]
+      }
+    }
+  });
+
+  var merchantOverall = function () {
+    $.ajax({
+      url: window.location.origin + '/merchantOverall',
+      type: 'GET',
+      dataType: 'json',
+      success: function (data) {
+        incomeChart.data.labels = data.period;
+        incomeChart.data.datasets[0].data = data.nominal;
+        incomeChart.update();
+      },
+      error: function (data) {
+        console.log(data)
+      }
+    });
+  }
+
+  merchantOverall();
+});
+
+$(function () {
+  var ctx = document.getElementById('donorOverall').getContext('2d');
+  var incomeChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: [],
+      datasets: [{
+        label: 'Data Infaq Donatur',
+        data: [],
+        backgroundColor: "transparent",
+        borderColor: "#12bf24",
+        borderWidth: 4
+      }]
+    },
+    options: {
+      maintainAspectRatio: true,
+      legend: {
+        display: true,
+        labels: {
+          fontColor: '#585757',
+          boxWidth: 40
+        }
+      },
+      tooltips: {
+        enabled: true
+      },
+      scales: {
+        xAxes: [{
+          ticks: {
+            beginAtZero: true,
+            autoSkip: false,
+            fontColor: '#585757'
+          },
+          gridLines: {
+            display: true,
+            color: "rgba(0, 0, 0, 0.07)"
+          },
+
+        }],
+
+        yAxes: [{
+          ticks: {
+            beginAtZero: true,
+            fontColor: '#585757',
+          },
+          gridLines: {
+            display: true,
+            color: "rgba(0, 0, 0, 0.07)"
+          },
+        }]
+      }
+    }
+  });
+
+  var donorOverall = function () {
+    $.ajax({
+      url: window.location.origin + '/donorOverall',
+      type: 'GET',
+      dataType: 'json',
+      success: function (data) {
+        incomeChart.data.labels = data.period;
+        incomeChart.data.datasets[0].data = data.nominal;
+        incomeChart.update();
+      },
+      error: function (data) {
+        console.log(data)
+      }
+    });
+  }
+
+  donorOverall();
+});
+
+$(function () {
+  var ctx = document.getElementById('storeExpanses').getContext('2d');
+  var incomeChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: [],
+      datasets: [{
+        label: 'Data Pengeluaran Modal Toko',
+        data: [],
+        backgroundColor: "#12bf24",
+        borderColor: "#12bf24",
+        borderWidth: 2
+      }]
+    },
+    options: {
+      maintainAspectRatio: true,
+      legend: {
+        display: true,
+        labels: {
+          fontColor: '#585757',
+          boxWidth: 40
+        }
+      },
+      tooltips: {
+        enabled: true
+      },
+      scales: {
+        xAxes: [{
+          ticks: {
+            beginAtZero: true,
+            autoSkip: false,
+            fontColor: '#585757'
+          },
+          gridLines: {
+            display: true,
+            color: "rgba(0, 0, 0, 0.07)"
+          },
+          barPercentage: 0.4
+        }],
+
+        yAxes: [{
+          ticks: {
+            beginAtZero: true,
+            fontColor: '#585757',
+          },
+          gridLines: {
+            display: true,
+            color: "rgba(0, 0, 0, 0.07)"
+          },
+        }]
+      }
+    }
+  });
+
+  var storeExpanses = function () {
+    $.ajax({
+      url: window.location.origin + '/storeExpanses',
+      type: 'GET',
+      dataType: 'json',
+      success: function (data) {
+        incomeChart.data.labels = data.period;
+        incomeChart.data.datasets[0].data = data.nominal;
+        incomeChart.update();
+      },
+      error: function (data) {
+        console.log(data)
+      }
+    });
+  }
+
+  storeExpanses();
+});
+
+$(function () {
+  var ctx = document.getElementById('otherExpanses').getContext('2d');
+  var incomeChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: [],
+      datasets: [{
+        label: 'Data Pengeluaran Lain',
+        data: [],
+        backgroundColor: "#e72e7a",
+        borderColor: "#e72e7a",
+        borderWidth: 2
+      }]
+    },
+    options: {
+      maintainAspectRatio: true,
+      legend: {
+        display: true,
+        labels: {
+          fontColor: '#585757',
+          boxWidth: 40
+        }
+      },
+      tooltips: {
+        enabled: true
+      },
+      scales: {
+        xAxes: [{
+          ticks: {
+            beginAtZero: true,
+            autoSkip: false,
+            fontColor: '#585757'
+          },
+          gridLines: {
+            display: true,
+            color: "rgba(0, 0, 0, 0.07)"
+          },
+          barPercentage: 0.4
+        }],
+
+        yAxes: [{
+          ticks: {
+            beginAtZero: true,
+            fontColor: '#585757',
+          },
+          gridLines: {
+            display: true,
+            color: "rgba(0, 0, 0, 0.07)"
+          },
+        }]
+      }
+    }
+  });
+
+  var storeExpanses = function () {
+    $.ajax({
+      url: window.location.origin + '/otherExpanses',
+      type: 'GET',
+      dataType: 'json',
+      success: function (data) {
+        incomeChart.data.labels = data.period;
+        incomeChart.data.datasets[0].data = data.nominal;
+        incomeChart.update();
+      },
+      error: function (data) {
+        console.log(data)
+      }
+    });
+  }
+
+  storeExpanses();
+});

@@ -14,7 +14,7 @@
   <ul class="metismenu" id="menu">
     
     <li class="{{ Request::is('/') ? 'mm-active' : '' }}">
-      <a href="">
+      <a href="/">
         <div class="parent-icon"><i class="bi bi-house-door"></i>
         </div>
         <div class="menu-title">Dashboard</div>
