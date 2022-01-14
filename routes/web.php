@@ -27,6 +27,8 @@ Route::post('/login', [AdminController::class, 'authentication']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [AdminController::class, 'index']);
+    Route::get('/merchantOverall', [AdminController::class, 'merchantOverall']);
+    Route::get('/donorOverall', [AdminController::class, 'donorOverall']);
     Route::post('/logout', [AdminController::class, 'logout']);
 
     // Infaq Pedagang
@@ -50,7 +52,7 @@ Route::middleware('auth')->group(function () {
 
     // Infaq Toko
     Route::resource('toko', StoreController::class)->parameters([
-        'toko' => 'store_income'
+        'toko' => 'store'
     ])->except('show');
 
     // Jumat Berkah

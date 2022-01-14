@@ -184,3 +184,149 @@ $(function () {
     });
   });
 });
+
+$(function () {
+  var ctx = document.getElementById('merchantOverall').getContext('2d');
+  var incomeChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: [],
+      datasets: [{
+        label: 'Data Infaq Pedagang',
+        data: [],
+        backgroundColor: "transparent",
+        borderColor: "#3461ff",
+        borderWidth: 4
+      }]
+    },
+    options: {
+      maintainAspectRatio: true,
+      legend: {
+        display: true,
+        labels: {
+          fontColor: '#585757',
+          boxWidth: 40
+        }
+      },
+      tooltips: {
+        enabled: true
+      },
+      scales: {
+        xAxes: [{
+          ticks: {
+            beginAtZero: true,
+            autoSkip: false,
+            fontColor: '#585757'
+          },
+          gridLines: {
+            display: true,
+            color: "rgba(0, 0, 0, 0.07)"
+          },
+
+        }],
+
+        yAxes: [{
+          ticks: {
+            beginAtZero: true,
+            fontColor: '#585757',
+          },
+          gridLines: {
+            display: true,
+            color: "rgba(0, 0, 0, 0.07)"
+          },
+        }]
+      }
+    }
+  });
+
+  var merchantOverall = function () {
+    $.ajax({
+      url: window.location.origin + '/merchantOverall',
+      type: 'GET',
+      dataType: 'json',
+      success: function (data) {
+        incomeChart.data.labels = data.period;
+        incomeChart.data.datasets[0].data = data.nominal;
+        incomeChart.update();
+      },
+      error: function (data) {
+        console.log(data)
+      }
+    });
+  }
+
+  merchantOverall();
+});
+
+$(function () {
+  var ctx = document.getElementById('donorOverall').getContext('2d');
+  var incomeChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: [],
+      datasets: [{
+        label: 'Data Infaq Donatur',
+        data: [],
+        backgroundColor: "transparent",
+        borderColor: "#12bf24",
+        borderWidth: 4
+      }]
+    },
+    options: {
+      maintainAspectRatio: true,
+      legend: {
+        display: true,
+        labels: {
+          fontColor: '#585757',
+          boxWidth: 40
+        }
+      },
+      tooltips: {
+        enabled: true
+      },
+      scales: {
+        xAxes: [{
+          ticks: {
+            beginAtZero: true,
+            autoSkip: false,
+            fontColor: '#585757'
+          },
+          gridLines: {
+            display: true,
+            color: "rgba(0, 0, 0, 0.07)"
+          },
+
+        }],
+
+        yAxes: [{
+          ticks: {
+            beginAtZero: true,
+            fontColor: '#585757',
+          },
+          gridLines: {
+            display: true,
+            color: "rgba(0, 0, 0, 0.07)"
+          },
+        }]
+      }
+    }
+  });
+
+  var donorOverall = function () {
+    $.ajax({
+      url: window.location.origin + '/donorOverall',
+      type: 'GET',
+      dataType: 'json',
+      success: function (data) {
+        incomeChart.data.labels = data.period;
+        incomeChart.data.datasets[0].data = data.nominal;
+        incomeChart.update();
+      },
+      error: function (data) {
+        console.log(data)
+      }
+    });
+  }
+
+  donorOverall();
+})
