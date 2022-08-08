@@ -65,9 +65,9 @@ class AdminController extends Controller
         $total_expanses = $friday_expanses + $fondation_expanses + $all_expanses;
 
         return view('home', [
-            'pedagang'          => Donor::count(),
+            'pedagang'          => Merchant::count(),
             'total_pedagang'    => $merchant_incomes,
-            'donatur'           => Merchant::count(),
+            'donatur'           => Donor::count(),
             'total_donatur'     => $donor_incomes + $store_incomes,
             'pemasukkan'        => $total_income,
             'uang_pedagang'     => $merchant_expanses,
