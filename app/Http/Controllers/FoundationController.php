@@ -81,7 +81,7 @@ class FoundationController extends Controller
                 $slug = 'al-kahfi';
                 break;
         }
-        return redirect('yatim-piatu/' . $slug)->with('success', 'Data pengeluaran yatim piatu berhasil ditambahkan!');
+        return redirect('admin/yatim-piatu/' . $slug)->with('success', 'Data pengeluaran yatim piatu berhasil ditambahkan!');
     }
 
     /**
@@ -142,7 +142,7 @@ class FoundationController extends Controller
                 $slug = 'al-kahfi';
                 break;
         }
-        return redirect('yatim-piatu/' . $slug)->with('success', 'Data pengeluaran yatim piatu berhasil diubah!');
+        return redirect('admin/yatim-piatu/' . $slug)->with('success', 'Data pengeluaran yatim piatu berhasil diubah!');
     }
 
     /**
@@ -169,6 +169,6 @@ class FoundationController extends Controller
                 break;
         }
         $foundation->delete();
-        return redirect('yatim-piatu/' . $slug)->with('success', 'Data pengeluaran yatim piatu berhasil dihapus!');
+        return redirect('admin/yatim-piatu/' . $slug)->with('success', 'Data pengeluaran yatim piatu berhasil dihapus!');
     }
 }

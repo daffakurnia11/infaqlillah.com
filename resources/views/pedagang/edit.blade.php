@@ -9,10 +9,10 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb mb-0 p-0">
         <li class="breadcrumb-item">
-          <a href="/"><i class="bx bx-home-alt"></i> Dashboard</a>
+          <a href="/admin"><i class="bx bx-home-alt"></i> Dashboard</a>
         </li>
         <li class="breadcrumb-item">
-          <a href="/pedagang"><i class="bi bi-shop"></i> Pedagang</a>
+          <a href="/admin/pedagang"><i class="bi bi-shop"></i> Pedagang</a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">
           Ubah Pedagang
@@ -30,7 +30,7 @@
     <div class="card">
       <div class="card-body">
         <div class="border p-3 rounded">
-          <form action="/pedagang/{{ $merchant->number }}" method="POST" class="row g-3" enctype="multipart/form-data">
+          <form action="/admin/pedagang/{{ $merchant->number }}" method="POST" class="row g-3" enctype="multipart/form-data">
             @method('PUT')
             @csrf
             <div class="col-12">

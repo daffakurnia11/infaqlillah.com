@@ -9,10 +9,10 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb mb-0 p-0">
         <li class="breadcrumb-item">
-          <a href="/"><i class="bx bx-home-alt"></i> Dashboard</a>
+          <a href="/admin/"><i class="bx bx-home-alt"></i> Dashboard</a>
         </li>
         <li class="breadcrumb-item">
-          <a href="/donatur"><i class="bi bi-people-fill"></i> Donatur</a>
+          <a href="/admin/donatur"><i class="bi bi-people-fill"></i> Donatur</a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">
           Tambah Donatur
@@ -30,7 +30,7 @@
     <div class="card">
       <div class="card-body">
         <div class="border p-3 rounded">
-          <form action="/donatur" method="POST" class="row g-3" enctype="multipart/form-data">
+          <form action="/admin/donatur" method="POST" class="row g-3" enctype="multipart/form-data">
             @csrf
             <div class="col-12">
               <label class="form-label">Nama Donatur</label>

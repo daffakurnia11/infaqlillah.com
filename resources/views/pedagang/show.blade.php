@@ -13,10 +13,10 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb mb-0 p-0">
         <li class="breadcrumb-item">
-          <a href="/"><i class="bx bx-home-alt"></i> Dashboard</a>
+          <a href="/admin"><i class="bx bx-home-alt"></i> Dashboard</a>
         </li>
         <li class="breadcrumb-item">
-          <a href="/pedagang"><i class="bi bi-shop"></i> Pedagang</a>
+          <a href="/admin/pedagang"><i class="bi bi-shop"></i> Pedagang</a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">
           {{ $merchant->name }}
@@ -76,12 +76,12 @@
       </div>
       <div class="card-footer">
         <div class="d-flex flex-row-reverse">
-          <form action="/pedagang/{{ $merchant->number }}" method="POST">
+          <form action="/admin/pedagang/{{ $merchant->number }}" method="POST">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-danger ms-2" onclick="return confirm('Apakah data ingin dihapus?');"><i class="bi bi-trash-fill"></i> Hapus Data</button>
           </form>
-          <a href="/pedagang/{{ $merchant->number }}/edit" class="btn btn-warning ms-2"><i class="bi bi-pencil-fill"></i> Ubah Data</a>
+          <a href="/admin/pedagang/{{ $merchant->number }}/edit" class="btn btn-warning ms-2"><i class="bi bi-pencil-fill"></i> Ubah Data</a>
         </div>
       </div>
     </div>

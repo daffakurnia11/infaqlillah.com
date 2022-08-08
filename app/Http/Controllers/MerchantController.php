@@ -62,7 +62,7 @@ class MerchantController extends Controller
             $validated['photo'] = $photoFile;
         }
         Merchant::create($validated);
-        return redirect('pedagang/' . $validated['number'])->with('success', 'Pengeluaran telah dicatat dan Pedagang telah ditambahkan!');
+        return redirect('admin/pedagang/' . $validated['number'])->with('success', 'Pengeluaran telah dicatat dan Pedagang telah ditambahkan!');
     }
 
     /**
@@ -192,7 +192,7 @@ class MerchantController extends Controller
             $validated['photo'] = $photoFile;
         }
         $merchant->update($validated);
-        return redirect('pedagang/' . $merchant->number)->with('success', 'Data pedagang telah berhasil diubah!');
+        return redirect('admin/pedagang/' . $merchant->number)->with('success', 'Data pedagang telah berhasil diubah!');
     }
 
     /**
@@ -207,7 +207,7 @@ class MerchantController extends Controller
         unlink(public_path('img/foto_pedagang/' . $photo));
 
         $merchant->delete();
-        return redirect('pedagang')->with('success', 'Data pedagang telah berhasil dihapus!');
+        return redirect('admin/pedagang')->with('success', 'Data pedagang telah berhasil dihapus!');
     }
 
     public function income()

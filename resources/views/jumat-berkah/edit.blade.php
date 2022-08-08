@@ -13,7 +13,7 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb mb-0 p-0">
         <li class="breadcrumb-item">
-          <a href="/"><i class="bx bx-home-alt"></i> Dashboard</a>
+          <a href="/admin"><i class="bx bx-home-alt"></i> Dashboard</a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">
           <i class="bi bi-gift"></i> Jumat Berkah
@@ -34,7 +34,7 @@
     <div class="card">
       <div class="card-body">
         <div class="border p-3 rounded">
-          <form action="/jumat-berkah/{{ $friday->id }}" method="POST" class="row g-3" enctype="multipart/form-data">
+          <form action="/admin/jumat-berkah/{{ $friday->id }}" method="POST" class="row g-3" enctype="multipart/form-data">
             @method('PUT')
             @csrf
             <div class="col-12">

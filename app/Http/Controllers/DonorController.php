@@ -72,7 +72,7 @@ class DonorController extends Controller
                 'received_at'   => Carbon::now()
             ]);
         }
-        return redirect('donatur')->with('success', 'Donatur telah berhasil ditambahkan!');
+        return redirect('admin/donatur')->with('success', 'Donatur telah berhasil ditambahkan!');
     }
 
     /**
@@ -180,7 +180,7 @@ class DonorController extends Controller
         ]);
 
         $donor->update($validated);
-        return redirect('donatur')->with('success', 'Data donatur telah berhasil diubah!');
+        return redirect('admin/donatur')->with('success', 'Data donatur telah berhasil diubah!');
     }
 
     /**
@@ -192,7 +192,7 @@ class DonorController extends Controller
     public function destroy(Donor $donor)
     {
         $donor->delete();
-        return redirect('donatur')->with('success', 'Data donatur telah berhasil dihapus!');
+        return redirect('admin/donatur')->with('success', 'Data donatur telah berhasil dihapus!');
     }
 
     public function donorIncomeData(Donor $donor)

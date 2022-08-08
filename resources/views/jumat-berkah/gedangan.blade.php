@@ -13,7 +13,7 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb mb-0 p-0">
         <li class="breadcrumb-item">
-          <a href="/"><i class="bx bx-home-alt"></i> Dashboard</a>
+          <a href="/admin"><i class="bx bx-home-alt"></i> Dashboard</a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">
           <i class="bi bi-gift"></i> Jumat Berkah
@@ -29,7 +29,7 @@
 
 <h6 class="mb-0 text-uppercase d-flex justify-content-between align-items-center">
   <span>Data Jumat Berkah Gedangan</span>
-  <a href="/jumat-berkah/create" class="btn btn-sm btn-primary">Tambah Pengeluaran</a>
+  <a href="/admin/jumat-berkah/create" class="btn btn-sm btn-primary">Tambah Pengeluaran</a>
 </h6>
 <hr/>
 <div class="card">
@@ -63,8 +63,8 @@
               <td class="align-middle text-nowrap">
                 <div class="table-actions d-flex align-items-center justify-content-center gap-3 fs-6">
                   {{-- <a href="/toko/{{ $data->id }}" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Detail" aria-label="Detail"><i class="bi bi-eye-fill"></i></a> --}}
-                  <a href="/jumat-berkah/{{ $data->id }}/edit" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Ubah" aria-label="Ubah"><i class="bi bi-pencil-fill"></i></a>
-                  <form action="/jumat-berkah/{{ $data->id }}" method="POST">
+                  <a href="/admin/jumat-berkah/{{ $data->id }}/edit" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Ubah" aria-label="Ubah"><i class="bi bi-pencil-fill"></i></a>
+                  <form action="/admin/jumat-berkah/{{ $data->id }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="text-danger bg-transparent border-0 p-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Hapus" aria-label="Hapus" onclick="return confirm('Apakah data ingin dihapus?');"><i class="bi bi-trash-fill"></i></button>

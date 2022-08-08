@@ -13,10 +13,10 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb mb-0 p-0">
         <li class="breadcrumb-item">
-          <a href="/"><i class="bx bx-home-alt"></i> Dashboard</a>
+          <a href="/admin"><i class="bx bx-home-alt"></i> Dashboard</a>
         </li>
         <li class="breadcrumb-item">
-          <a href="/donatur"><i class="bi bi-people-fill"></i> Donatur</a>
+          <a href="/admin/donatur"><i class="bi bi-people-fill"></i> Donatur</a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">
           {{ $donor->name }}
@@ -69,12 +69,12 @@
       </div>
       <div class="card-footer">
         <div class="d-flex flex-row-reverse">
-          <form action="/donatur/{{ $donor->id }}" method="POST">
+          <form action="/admin/donatur/{{ $donor->id }}" method="POST">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-danger ms-2" onclick="return confirm('Apakah data ingin dihapus?');"><i class="bi bi-trash-fill"></i> Hapus Data</button>
           </form>
-          <a href="/donatur/{{ $donor->id }}/edit" class="btn btn-warning ms-2"><i class="bi bi-pencil-fill"></i> Ubah Data</a>
+          <a href="/admin/donatur/{{ $donor->id }}/edit" class="btn btn-warning ms-2"><i class="bi bi-pencil-fill"></i> Ubah Data</a>
         </div>
       </div>
     </div>

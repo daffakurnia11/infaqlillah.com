@@ -13,7 +13,7 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb mb-0 p-0">
         <li class="breadcrumb-item">
-          <a href="/"><i class="bx bx-home-alt"></i> Dashboard</a>
+          <a href="/admin"><i class="bx bx-home-alt"></i> Dashboard</a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">
           <i class="bi bi-bag"></i> Bazar Subuh
@@ -62,7 +62,7 @@
                   <div class="table-actions d-flex align-items-center justify-content-center gap-3 fs-6">
                     {{-- <a href="/toko/{{ $data->id }}" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Detail" aria-label="Detail"><i class="bi bi-eye-fill"></i></a> --}}
                     <button type="button" class="btn btn-sm p-0 text-warning editBazaar" data-bs-toggle="modal" data-bs-target="#bazaarModal" data-expanses="{{ $data->id }}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Ubah" aria-label="Ubah"><i class="bi bi-pencil-fill"></i></button>
-                    <form action="/bazaar/{{ $data->id }}" method="POST">
+                    <form action="/admin/bazaar/{{ $data->id }}" method="POST">
                       @csrf
                       @method('DELETE')
                       <button type="submit" class="text-danger bg-transparent border-0 p-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Hapus" aria-label="Hapus" onclick="return confirm('Apakah data ingin dihapus?');"><i class="bi bi-trash-fill"></i></button>
@@ -95,7 +95,7 @@
         <h5 class="modal-title">Form Tambah Pengeluaran</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="/bazaar" method="POST" id="form-container" enctype="multipart/form-data">
+      <form action="/admin/bazaar" method="POST" id="form-container" enctype="multipart/form-data">
         @csrf
         @method('POST')
         <div class="modal-body">

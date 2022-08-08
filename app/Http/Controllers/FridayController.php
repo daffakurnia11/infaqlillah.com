@@ -99,7 +99,7 @@ class FridayController extends Controller
                 $slug = 'tulungagung';
                 break;
         }
-        return redirect('jumat-berkah/' . $slug)->with('success', 'Data pengeluaran jumat berkah berhasil ditambahkan!');
+        return redirect('admin/jumat-berkah/' . $slug)->with('success', 'Data pengeluaran jumat berkah berhasil ditambahkan!');
     }
 
     /**
@@ -168,7 +168,7 @@ class FridayController extends Controller
                 $slug = 'tulungagung';
                 break;
         }
-        return redirect('jumat-berkah/' . $slug)->with('success', 'Data pengeluaran jumat berkah berhasil diubah!');
+        return redirect('admin/jumat-berkah/' . $slug)->with('success', 'Data pengeluaran jumat berkah berhasil diubah!');
     }
 
     /**
@@ -201,6 +201,6 @@ class FridayController extends Controller
                 break;
         }
         $friday->delete();
-        return redirect('jumat-berkah/' . $slug)->with('success', 'Data pengeluaran jumat berkah berhasil dihapus!');
+        return redirect('admin/jumat-berkah/' . $slug)->with('success', 'Data pengeluaran jumat berkah berhasil dihapus!');
     }
 }

@@ -29,9 +29,9 @@ class AdminController extends Controller
 
         if (Auth::attempt($credentials)) {
             if (auth()->user()->roles == 'Admin' || auth()->user()->roles == 'Superadmin') {
-                return redirect('/');
+                return redirect('/admin');
             } else {
-                return redirect('/');
+                return redirect('/admin');
             }
         }
 

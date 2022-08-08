@@ -46,7 +46,7 @@ class StoreController extends Controller
             'notes'     => 'nullable'
         ]);
         Store::create($validate);
-        return redirect('toko')->with('success', 'Data pembelian berhasil ditambahkan!');
+        return redirect('admin/toko')->with('success', 'Data pembelian berhasil ditambahkan!');
     }
 
     /**
@@ -78,7 +78,7 @@ class StoreController extends Controller
             'notes'     => 'nullable'
         ]);
         $store->update($validate);
-        return redirect('toko')->with('success', 'Data pembelian berhasil diubah!');
+        return redirect('admin/toko')->with('success', 'Data pembelian berhasil diubah!');
     }
 
     /**
@@ -90,6 +90,6 @@ class StoreController extends Controller
     public function destroy(Store $store)
     {
         $store->delete();
-        return redirect('toko')->with('success', 'Data pembelian berhasil dihapus!');
+        return redirect('admin/toko')->with('success', 'Data pembelian berhasil dihapus!');
     }
 }

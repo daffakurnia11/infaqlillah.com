@@ -13,7 +13,7 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb mb-0 p-0">
         <li class="breadcrumb-item">
-          <a href="/"><i class="bx bx-home-alt"></i> Dashboard</a>
+          <a href="/admin"><i class="bx bx-home-alt"></i> Dashboard</a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">
           <i class="bi bi-shop"></i> Infaq Pedagang
@@ -48,8 +48,8 @@
               <td class="align-middle text-center text-nowrap">{{ $merchant->incomes }}</td>
               <td class="align-middle text-nowrap">
                 <div class="d-flex align-items-center justify-content-center fs-6">
-                  <a href="/pedagang/{{ $merchant->number }}" class="mx-3 text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Detail" aria-label="Detail"><i class="bi bi-eye-fill"></i> Detail</a>
-                  <a href="/pedagang/{{ $merchant->number }}/edit" data-bs-toggle="modal" data-bs-target="#addNewIncome" class="mx-3 text-success addIncomeButton" data-number="{{ $merchant->number }}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Tambah Infaq" aria-label="Tambah Infaq"><i class="bi bi-plus"></i>Tambah Infaq</a>
+                  <a href="/admin/pedagang/{{ $merchant->number }}" class="mx-3 text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Detail" aria-label="Detail"><i class="bi bi-eye-fill"></i> Detail</a>
+                  <a href="/admin/pedagang/{{ $merchant->number }}/edit" data-bs-toggle="modal" data-bs-target="#addNewIncome" class="mx-3 text-success addIncomeButton" data-number="{{ $merchant->number }}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Tambah Infaq" aria-label="Tambah Infaq"><i class="bi bi-plus"></i>Tambah Infaq</a>
                   {{-- <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Hapus" aria-label="Hapus"><i class="bi bi-trash-fill"></i></a> --}}
                 </div>
               </td>

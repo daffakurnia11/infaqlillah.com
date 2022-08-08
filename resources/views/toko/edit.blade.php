@@ -13,10 +13,10 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb mb-0 p-0">
         <li class="breadcrumb-item">
-          <a href="/"><i class="bx bx-home-alt"></i> Dashboard</a>
+          <a href="/admin"><i class="bx bx-home-alt"></i> Dashboard</a>
         </li>
         <li class="breadcrumb-item">
-          <a href="/toko"><i class="bi bi-shop"></i> Toko</a>
+          <a href="/admin/toko"><i class="bi bi-shop"></i> Toko</a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">
           Ubah Pemasukkan
@@ -34,7 +34,7 @@
     <div class="card">
       <div class="card-body">
         <div class="border p-3 rounded">
-          <form action="/toko/{{ $income->id }}" method="POST" class="row g-3">
+          <form action="/admin/toko/{{ $income->id }}" method="POST" class="row g-3">
             @csrf
             @method('PUT')
             <div class="col-12">
