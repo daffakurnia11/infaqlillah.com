@@ -7,10 +7,10 @@
     <div class="top-navbar d-none d-xl-block">
       <ul class="navbar-nav align-items-center">
         <li class="nav-item">
-          <a class="nav-link" href="/">Dashboard</a>
+          <a class="nav-link" href="/admin">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="">Website Utama</a>
+          <a class="nav-link" href="/">Website Utama</a>
         </li>
         <li class="nav-item">
           <form action="/logout" method="POST">

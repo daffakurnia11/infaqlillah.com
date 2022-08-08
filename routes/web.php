@@ -22,6 +22,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', [AdminController::class, 'home']);
+
 Route::get('/login', [AdminController::class, 'login'])->middleware('guest')->name('login');
 Route::post('/login', [AdminController::class, 'authentication']);
 Route::post('/logout', [AdminController::class, 'logout']);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Donor;
 use App\Models\Donor_income;
 use App\Models\Expanse;
 use App\Models\Foundation;
@@ -15,6 +16,66 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
+    public function home()
+    {
+        // MERCHANT ALL INCOMES
+        $merchant_incomes = 0;
+        $merchant_income = Merchant_income::all();
+        foreach ($merchant_income as $data) {
+            $merchant_incomes = $merchant_incomes + $data->nominal;
+        }
+        // DONOR ALL INCOMES
+        $donor_incomes = 0;
+        $donor_income = Donor_income::all();
+        foreach ($donor_income as $data) {
+            $donor_incomes = $donor_incomes + $data->nominal;
+        }
+        // STORE ALL INCOMES
+        $store_incomes = 0;
+        $store_income = Store::all();
+        foreach ($store_income as $data) {
+            $store_incomes = $store_incomes + $data->nominal;
+        }
+        $total_income = $merchant_incomes + $donor_incomes + $store_incomes;
+
+        // MERCHANT ALL EXPANSES
+        $merchant_expanses = 0;
+        $merchant_expanse = Merchant::all();
+        foreach ($merchant_expanse as $data) {
+            $merchant_expanses = $merchant_expanses + $data->nominal;
+        }
+        // FRIDAY ALL EXPANSES
+        $friday_expanses = 0;
+        $friday_expanse = Friday::all();
+        foreach ($friday_expanse as $data) {
+            $friday_expanses = $friday_expanses + $data->nominal;
+        }
+        // FOUNDATION ALL EXPANSES
+        $fondation_expanses = 0;
+        $fondation_expanse = Foundation::all();
+        foreach ($fondation_expanse as $data) {
+            $fondation_expanses = $fondation_expanses + $data->nominal;
+        }
+        // ALL OTHER EXPANSES
+        $all_expanses = 0;
+        $all_expanse = Expanse::all();
+        foreach ($all_expanse as $data) {
+            $all_expanses = $all_expanses + $data->nominal;
+        }
+        $total_expanses = $friday_expanses + $fondation_expanses + $all_expanses;
+
+        return view('home', [
+            'pedagang'          => Donor::count(),
+            'total_pedagang'    => $merchant_incomes,
+            'donatur'           => Merchant::count(),
+            'total_donatur'     => $donor_incomes + $store_incomes,
+            'pemasukkan'        => $total_income,
+            'uang_pedagang'     => $merchant_expanses,
+            'pengeluaran'       => $total_expanses,
+            'total_sekarang'    => $total_income - ($total_expanses + $merchant_expanses)
+        ]);
+    }
+
     public function login()
     {
         return view('login');

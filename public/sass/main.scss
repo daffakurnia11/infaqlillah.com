@@ -1,0 +1,288 @@
+$black: black;
+$background-color: #fafdfc;
+$text-primary: #009c88;
+$text-secondary: #4de6b8;
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Montserrat", sans-serif;
+	font-size: 14px;
+	font-weight: 500;
+}
+
+::-webkit-scrollbar {
+	width: 0.3rem;
+	&-thumb {
+		background-color: $text-primary;
+	}
+	&-track {
+		background-color: $background-color;
+	}
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	background-color: $background-color;
+	color: $text-primary;
+	position: relative;
+}
+// Navbar
+.navbar {
+	text-transform: uppercase;
+	color: $text-primary;
+	background-color: $background-color;
+	a {
+		color: inherit;
+		transition: ease-in-out 0.3s;
+		&:hover {
+			color: $text-secondary;
+		}
+	}
+	&-brand {
+		font-weight: 600;
+		font-size: 1.5rem;
+	}
+	&-toggler {
+		border-color: $text-primary;
+	}
+	&-toggler-icon {
+		background-image: url("http://localhost/infaqlillah/assets/img/bars-solid.svg");
+	}
+	&-nav {
+		.nav-link {
+			margin: auto 1rem;
+			font-weight: 600;
+			&.active {
+				position: relative;
+				&::after {
+					position: absolute;
+					content: "";
+					height: 3px;
+					width: 3rem;
+					bottom: 0;
+					left: 50%;
+					transform: translateX(-50%);
+					background-color: $text-primary;
+					border-radius: 3rem;
+				}
+			}
+		}
+	}
+}
+// End of Navbar
+
+// Header
+.header {
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	&-title {
+		text-transform: uppercase;
+		font-size: 4rem;
+		font-weight: 600;
+	}
+	&-desc {
+		color: $text-secondary;
+	}
+}
+// End of Header
+
+.content-title {
+	font-size: 3rem;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+.content-subtitle {
+	font-size: 2.25rem;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+.content-box {
+	color: $background-color;
+	background-color: $text-primary;
+	max-width: 180px;
+	padding: 1.5rem 0;
+	border-radius: 1rem;
+}
+.content-box-bordered {
+	border: 2px solid $text-primary;
+	border-radius: 1rem;
+	max-width: 500px;
+	padding: 1.5rem 3rem;
+}
+.divider {
+	content: "";
+	display: block;
+	height: 2px;
+	width: 100%;
+	background-color: $text-primary;
+}
+
+// About
+#about {
+	padding-top: 5rem;
+	.benefit {
+		&-box {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			max-width: 150px;
+			height: 150px;
+			border: 3px solid $text-primary;
+			border-radius: 1rem;
+		}
+		&-desc {
+			color: $text-primary;
+			font-size: 1.25rem;
+		}
+	}
+}
+// End of About
+
+// Statistics
+#statistics {
+	padding-top: 5rem;
+	.users {
+		.total-user {
+			font-size: 2.5rem;
+			line-height: normal;
+			margin: 0;
+			padding: 0;
+		}
+		.number-infaq {
+			font-size: 1.5rem;
+		}
+	}
+	.infaq {
+		margin: 3rem auto;
+		&-total {
+			font-size: 2rem;
+			font-weight: 600;
+		}
+	}
+	.report {
+		&-desc,
+		&-money {
+			font-weight: 600;
+			font-size: 1.25rem;
+		}
+	}
+}
+// End of Statistics
+
+// Footer
+footer {
+	padding: 5rem 0 1rem;
+	margin-top: 3rem;
+	background-color: $text-primary;
+	color: $background-color;
+	.maps {
+		border-radius: 1rem;
+		border: 0;
+		box-shadow: 3px 3px 4px #015045;
+		width: 100%;
+		height: 500px;
+	}
+	.content-subtitle {
+		font-size: 1.75rem;
+	}
+	a {
+		color: inherit;
+		text-decoration: none;
+		transition: ease-in-out 0.3s;
+		&:hover {
+			color: $text-secondary;
+		}
+	}
+}
+// End of Footer
+
+// MEDIA QUERIES
+@media screen and (max-width: 768px) {
+	.content-title {
+		font-size: 2.5rem;
+	}
+	.content-subtitle {
+		font-size: 2rem;
+	}
+
+	// Header
+	.header {
+		margin-top: 3rem;
+		margin-bottom: 3rem;
+		&-title {
+			font-size: 3rem;
+		}
+	}
+	// End of Header
+
+	// Statistics
+	#statistics {
+		.users {
+			margin-top: 3rem;
+			.total-user {
+				font-size: 3.5rem;
+			}
+			.number-infaq {
+				font-size: 1.25rem;
+			}
+		}
+	}
+	// End of Statistics
+}
+
+@media screen and (max-width: 576px) {
+	* {
+		font-size: 12px;
+	}
+
+	.content-title {
+		font-size: 2.25rem;
+	}
+	.content-subtitle {
+		font-size: 1.75rem;
+	}
+
+	// Header
+	.header {
+		&-title {
+			font-size: 3rem;
+		}
+	}
+	// End of Header
+
+	// About
+	#about {
+		.benefit {
+			&-box {
+				max-width: 120px;
+				height: 120px;
+			}
+		}
+	}
+	// End of About
+
+	// Statistics
+	#statistics {
+		.infaq {
+			&-total {
+				font-size: 2rem;
+			}
+		}
+	}
+	// End of Statistics
+
+	// Footer
+	footer {
+		.maps {
+			height: 300px;
+		}
+	}
+	// End of Footer
+}

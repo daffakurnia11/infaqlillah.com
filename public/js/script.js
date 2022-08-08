@@ -241,7 +241,7 @@ $(function () {
 
   var merchantOverall = function () {
     $.ajax({
-      url: window.location.origin + '/merchantOverall',
+      url: window.location.origin + '/admin/merchantOverall',
       type: 'GET',
       dataType: 'json',
       success: function (data) {
@@ -314,7 +314,7 @@ $(function () {
 
   var donorOverall = function () {
     $.ajax({
-      url: window.location.origin + '/donorOverall',
+      url: window.location.origin + '/admin/donorOverall',
       type: 'GET',
       dataType: 'json',
       success: function (data) {
@@ -387,7 +387,7 @@ $(function () {
 
   var storeExpanses = function () {
     $.ajax({
-      url: window.location.origin + '/storeExpanses',
+      url: window.location.origin + '/admin/storeExpanses',
       type: 'GET',
       dataType: 'json',
       success: function (data) {
@@ -460,7 +460,7 @@ $(function () {
 
   var storeExpanses = function () {
     $.ajax({
-      url: window.location.origin + '/otherExpanses',
+      url: window.location.origin + '/admin/otherExpanses',
       type: 'GET',
       dataType: 'json',
       success: function (data) {
