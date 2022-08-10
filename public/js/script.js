@@ -71,7 +71,7 @@ $(function () {
     const data = $(this).attr('data-number');
     $.ajax({
       type: "GET",
-      url: '/getDonorData/' + data,
+      url: '/admin/getDonorData/' + data,
       dataType: 'json',
       success: function (data) {
         console.log(data)
@@ -98,7 +98,7 @@ $(function () {
     console.log(data);
     $.ajax({
       type: "GET",
-      url: '/getExpanseData/' + data,
+      url: '/admin/getExpanseData/' + data,
       dataType: 'json',
       success: function (data) {
         console.log(data)
@@ -131,7 +131,7 @@ $(function () {
     console.log(data);
     $.ajax({
       type: "GET",
-      url: '/getExpanseData/' + data,
+      url: '/admin/getExpanseData/' + data,
       dataType: 'json',
       success: function (data) {
         console.log(data)
@@ -166,7 +166,7 @@ $(function () {
     console.log(data);
     $.ajax({
       type: "GET",
-      url: '/getExpanseData/' + data,
+      url: '/admin/getExpanseData/' + data,
       dataType: 'json',
       success: function (data) {
         console.log(data)
