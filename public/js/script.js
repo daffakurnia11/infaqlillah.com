@@ -55,7 +55,7 @@ $(function () {
     const data = $(this).attr('data-number');
     $.ajax({
       type: "GET",
-      url: '/getMerchantData/' + data,
+      url: '/admin/getMerchantData/' + data,
       dataType: 'json',
       success: function (data) {
         console.log(data)
