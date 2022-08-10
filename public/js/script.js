@@ -62,7 +62,7 @@ $(function () {
         $('#name').val(data.name)
         $('#number').val(data.number)
         $('#merchant_id').val(data.id)
-        $('#form-container').attr('action', '/addIncome/' + data.number)
+        $('#form-container').attr('action', '/admin/addIncome/' + data.number)
       }
     });
   });
@@ -77,14 +77,14 @@ $(function () {
         console.log(data)
         $('#name').val(data.name)
         $('#donor_id').val(data.id)
-        $('#form-container').attr('action', '/addDonorIncome/' + data.id)
+        $('#form-container').attr('action', '/admin/addDonorIncome/' + data.id)
       }
     });
   });
 
   // Add Bazaar Expanses
   $('.addBazaar').on('click', function () {
-    $('#form-container').attr('action', '/bazaar');
+    $('#form-container').attr('action', '/admin/bazaar');
     $('.modal-title').html('Form Tambah Pengeluaran Bazaar');
     $('input[name=_method').val('POST');
     $('#nominal').val('');
@@ -102,7 +102,7 @@ $(function () {
       dataType: 'json',
       success: function (data) {
         console.log(data)
-        $('#form-container').attr('action', '/bazaar/' + data.id);
+        $('#form-container').attr('action', '/admin/bazaar/' + data.id);
         $('.modal-title').html('Form Edit Pengeluaran Bazaar');
         $('input[name=_method').val('PUT');
         $('#nominal').val(data.nominal);
@@ -117,7 +117,7 @@ $(function () {
 
   // Add Other Expanses
   $('.addExpanse').on('click', function () {
-    $('#form-container').attr('action', '/pengeluaran-lain');
+    $('#form-container').attr('action', '/admin/pengeluaran-lain');
     $('.modal-title').html('Form Tambah Pengeluaran Lain');
     $('input[name=_method').val('POST');
     $('#nominal').val('');
@@ -135,7 +135,7 @@ $(function () {
       dataType: 'json',
       success: function (data) {
         console.log(data)
-        $('#form-container').attr('action', '/pengeluaran-lain/' + data.id);
+        $('#form-container').attr('action', '/admin/pengeluaran-lain/' + data.id);
         $('.modal-title').html('Form Edit Pengeluaran ' + data.event);
         $('input[name=_method').val('PUT');
         $('#event').val(data.event);
@@ -151,7 +151,7 @@ $(function () {
 
   // Add Shop Expanse
   $('.addShopExpanse').on('click', function () {
-    $('#form-container').attr('action', '/modal-toko');
+    $('#form-container').attr('action', '/admin/modal-toko');
     $('.modal-title').html('Form Tambah Modal Toko');
     $('input[name=_method').val('POST');
     $('#nominal').val('');
@@ -170,7 +170,7 @@ $(function () {
       dataType: 'json',
       success: function (data) {
         console.log(data)
-        $('#form-container').attr('action', '/modal-toko/' + data.id);
+        $('#form-container').attr('action', '/admin/modal-toko/' + data.id);
         $('.modal-title').html('Form Edit Modal Toko');
         $('input[name=_method').val('PUT');
         $('#notes').html(data.notes);
