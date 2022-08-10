@@ -91,7 +91,7 @@
         <h5 class="modal-title">Form Tambah Infaq</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="/addDonorIncome/" method="POST" id="form-container">
+      <form action="/admin/addDonorIncome/" method="POST" id="form-container">
         @csrf
         <input type="hidden" class="form-control" id="donor_id" name="donor_id" value="">
         <div class="modal-body">
